@@ -1,0 +1,6 @@
+framework module JTabBar {
+  umbrella header "JTabBar-umbrella.h"
+
+  export *
+  module * { export * }
+}

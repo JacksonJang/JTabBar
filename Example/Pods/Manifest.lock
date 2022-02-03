@@ -1,0 +1,16 @@
+PODS:
+  - JTabBar (0.1.0)
+
+DEPENDENCIES:
+  - JTabBar (from `../`)
+
+EXTERNAL SOURCES:
+  JTabBar:
+    :path: "../"
+
+SPEC CHECKSUMS:
+  JTabBar: a51a55c42b5c4e8ba9426a2873e8bdce4ec7d849
+
+PODFILE CHECKSUM: 79f89a1c266480c15edb9adac2022b595ec1df08
+
+COCOAPODS: 1.11.2

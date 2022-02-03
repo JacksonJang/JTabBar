@@ -1,0 +1,770 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		009D38548F7006B5840E988D1642F829 /* JTabBar-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = AC103B41BF8DFA0CF82A7B9F78FD966B /* JTabBar-dummy.m */; };
+		119D9157B7C6A9152F53AFEC49163F9D /* Pods-JTabBar_Example-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 6CADC2448B6EF6649A3A84EE57BE0EB7 /* Pods-JTabBar_Example-dummy.m */; };
+		434099A3A39DBDE516E341CBC904D332 /* Pods-JTabBar_Example-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = BEE863D4F92244B588922035CCD8AF18 /* Pods-JTabBar_Example-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		630386BAECD75045F2596E516E11CE3C /* Pods-JTabBar_Tests-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = AD59FD7CDA5C1F9536D6DE39E5FF0788 /* Pods-JTabBar_Tests-dummy.m */; };
+		667719A09D02259AE06BB518F6BCD4F2 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 73010CC983E3809BECEE5348DA1BB8C6 /* Foundation.framework */; };
+		75E7D00DCDD010AE36207ED7B12B493B /* ReplaceMe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E2EC4DDB727F7C3C922A23FB8016763 /* ReplaceMe.swift */; };
+		8FD2ACABEDF73C8CD406918CF5E500CE /* JTabBar-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 91DBA15105B8C7ADB776DA5131569CF7 /* JTabBar-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		9992336D8B3044C97A6D0B0095E20DBC /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 73010CC983E3809BECEE5348DA1BB8C6 /* Foundation.framework */; };
+		ED3CA4BCDBD7E6E94D48FD9296D784C1 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 73010CC983E3809BECEE5348DA1BB8C6 /* Foundation.framework */; };
+		F40151C94B6C561C8FE3B855815EB07E /* Pods-JTabBar_Tests-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 1E8F66FA8A5D4F884E79F7748377A102 /* Pods-JTabBar_Tests-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		6888F0EB048C425E87F373CB4275BE1E /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 97BB1495455D5DE7487435C3BE8D38F4;
+			remoteInfo = "Pods-JTabBar_Example";
+		};
+		77BE2F93EEDF0653AFF55C38DECEEF50 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = D97414A122CE1B3F5B51A78459DA4E54;
+			remoteInfo = JTabBar;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		004277C2DF38FE37D63EB5AC1D03CA70 /* Pods-JTabBar_Example-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-JTabBar_Example-acknowledgements.plist"; sourceTree = "<group>"; };
+		029C17C5B7360E3EAE2EAC2D7DDA5042 /* Pods-JTabBar_Example-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-JTabBar_Example-acknowledgements.markdown"; sourceTree = "<group>"; };
+		0DA2093345EE756F38E231F5AD5122CE /* Pods-JTabBar_Example-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-JTabBar_Example-frameworks.sh"; sourceTree = "<group>"; };
+		0FE2A55D1ECB4A934F3B20A80172565A /* Pods-JTabBar_Tests-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-JTabBar_Tests-acknowledgements.markdown"; sourceTree = "<group>"; };
+		1E8F66FA8A5D4F884E79F7748377A102 /* Pods-JTabBar_Tests-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-JTabBar_Tests-umbrella.h"; sourceTree = "<group>"; };
+		235762565311A1822F032B8A362B8216 /* Pods-JTabBar_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-JTabBar_Example.release.xcconfig"; sourceTree = "<group>"; };
+		2D1A479CC81EF390C40A1D37ABFF06C5 /* Pods-JTabBar_Tests-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-JTabBar_Tests-acknowledgements.plist"; sourceTree = "<group>"; };
+		319A90A69865BB5F5CA4278672D05742 /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; path = README.md; sourceTree = "<group>"; };
+		412105D2FEAE9C0F82028BBA2A9BA597 /* JTabBar.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = JTabBar.modulemap; sourceTree = "<group>"; };
+		430C4DF514C7A23A55CD9AFCA09801F8 /* Pods-JTabBar_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-JTabBar_Tests.debug.xcconfig"; sourceTree = "<group>"; };
+		43EA80F812D17AFFD6B4971A44439A20 /* Pods-JTabBar_Example */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = "Pods-JTabBar_Example"; path = Pods_JTabBar_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		594D79DADE580435059F9D1F010E6337 /* JTabBar.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = JTabBar.release.xcconfig; sourceTree = "<group>"; };
+		5BA8C083B87AB68CC9ED57D326C86BA8 /* Pods-JTabBar_Example-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-JTabBar_Example-Info.plist"; sourceTree = "<group>"; };
+		5E2EC4DDB727F7C3C922A23FB8016763 /* ReplaceMe.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ReplaceMe.swift; path = JTabBar/Classes/ReplaceMe.swift; sourceTree = "<group>"; };
+		68EA9AEFF5DBCC3B22B721D8819800B6 /* JTabBar */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = JTabBar; path = JTabBar.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		69482C250405B51FAFCDA49E5894A2BB /* Pods-JTabBar_Tests */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = "Pods-JTabBar_Tests"; path = Pods_JTabBar_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		6CADC2448B6EF6649A3A84EE57BE0EB7 /* Pods-JTabBar_Example-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-JTabBar_Example-dummy.m"; sourceTree = "<group>"; };
+		73010CC983E3809BECEE5348DA1BB8C6 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS14.0.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
+		8816F9E4536969CDAB1690E698B823CB /* Pods-JTabBar_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-JTabBar_Tests.release.xcconfig"; sourceTree = "<group>"; };
+		8FDAC71F18FCA7EB683458AAF67E6120 /* Pods-JTabBar_Example.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-JTabBar_Example.modulemap"; sourceTree = "<group>"; };
+		91DBA15105B8C7ADB776DA5131569CF7 /* JTabBar-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "JTabBar-umbrella.h"; sourceTree = "<group>"; };
+		9D940727FF8FB9C785EB98E56350EF41 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		AC103B41BF8DFA0CF82A7B9F78FD966B /* JTabBar-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "JTabBar-dummy.m"; sourceTree = "<group>"; };
+		AD59FD7CDA5C1F9536D6DE39E5FF0788 /* Pods-JTabBar_Tests-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-JTabBar_Tests-dummy.m"; sourceTree = "<group>"; };
+		BEE863D4F92244B588922035CCD8AF18 /* Pods-JTabBar_Example-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-JTabBar_Example-umbrella.h"; sourceTree = "<group>"; };
+		C32D2B8F76DBACA4CD485521D3C8DF3A /* Pods-JTabBar_Tests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-JTabBar_Tests.modulemap"; sourceTree = "<group>"; };
+		C3DB0C173D1026E8FA73AC68E208FDD4 /* JTabBar.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; lastKnownFileType = text; path = JTabBar.podspec; sourceTree = "<group>"; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		CEBCB3F81F16F29E5C4E07E44145B18D /* Pods-JTabBar_Tests-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-JTabBar_Tests-Info.plist"; sourceTree = "<group>"; };
+		D97553F24C1528D4B230D2EBA8B5E792 /* Pods-JTabBar_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-JTabBar_Example.debug.xcconfig"; sourceTree = "<group>"; };
+		DC767AA613B87C15279C7394E6B819A1 /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; path = LICENSE; sourceTree = "<group>"; };
+		E6047D3EB31BD3369B6524B6ACD2B4AB /* JTabBar.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = JTabBar.debug.xcconfig; sourceTree = "<group>"; };
+		E7C1895C80BFE0682663CEE7AFF88857 /* JTabBar-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "JTabBar-prefix.pch"; sourceTree = "<group>"; };
+		EB63B333EB3BDD9389A7631D6A72B3FD /* JTabBar-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "JTabBar-Info.plist"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		53E20AAB1BA4024E6C6B75E6244C2B4A /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				ED3CA4BCDBD7E6E94D48FD9296D784C1 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		596DC3F66E8B8CB1C8622FA34A9B993D /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				667719A09D02259AE06BB518F6BCD4F2 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		9A9A0BCE86D23B35D9FDBEE01FC94CEA /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9992336D8B3044C97A6D0B0095E20DBC /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		126CBBF73031E6E42EC4551CD9309022 /* Pod */ = {
+			isa = PBXGroup;
+			children = (
+				C3DB0C173D1026E8FA73AC68E208FDD4 /* JTabBar.podspec */,
+				DC767AA613B87C15279C7394E6B819A1 /* LICENSE */,
+				319A90A69865BB5F5CA4278672D05742 /* README.md */,
+			);
+			name = Pod;
+			sourceTree = "<group>";
+		};
+		39B0DC9668B5A5935D56D5DA9151A290 /* Pods-JTabBar_Tests */ = {
+			isa = PBXGroup;
+			children = (
+				C32D2B8F76DBACA4CD485521D3C8DF3A /* Pods-JTabBar_Tests.modulemap */,
+				0FE2A55D1ECB4A934F3B20A80172565A /* Pods-JTabBar_Tests-acknowledgements.markdown */,
+				2D1A479CC81EF390C40A1D37ABFF06C5 /* Pods-JTabBar_Tests-acknowledgements.plist */,
+				AD59FD7CDA5C1F9536D6DE39E5FF0788 /* Pods-JTabBar_Tests-dummy.m */,
+				CEBCB3F81F16F29E5C4E07E44145B18D /* Pods-JTabBar_Tests-Info.plist */,
+				1E8F66FA8A5D4F884E79F7748377A102 /* Pods-JTabBar_Tests-umbrella.h */,
+				430C4DF514C7A23A55CD9AFCA09801F8 /* Pods-JTabBar_Tests.debug.xcconfig */,
+				8816F9E4536969CDAB1690E698B823CB /* Pods-JTabBar_Tests.release.xcconfig */,
+			);
+			name = "Pods-JTabBar_Tests";
+			path = "Target Support Files/Pods-JTabBar_Tests";
+			sourceTree = "<group>";
+		};
+		578452D2E740E91742655AC8F1636D1F /* iOS */ = {
+			isa = PBXGroup;
+			children = (
+				73010CC983E3809BECEE5348DA1BB8C6 /* Foundation.framework */,
+			);
+			name = iOS;
+			sourceTree = "<group>";
+		};
+		6426813066B8077DD0D7CA4981283397 /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				412105D2FEAE9C0F82028BBA2A9BA597 /* JTabBar.modulemap */,
+				AC103B41BF8DFA0CF82A7B9F78FD966B /* JTabBar-dummy.m */,
+				EB63B333EB3BDD9389A7631D6A72B3FD /* JTabBar-Info.plist */,
+				E7C1895C80BFE0682663CEE7AFF88857 /* JTabBar-prefix.pch */,
+				91DBA15105B8C7ADB776DA5131569CF7 /* JTabBar-umbrella.h */,
+				E6047D3EB31BD3369B6524B6ACD2B4AB /* JTabBar.debug.xcconfig */,
+				594D79DADE580435059F9D1F010E6337 /* JTabBar.release.xcconfig */,
+			);
+			name = "Support Files";
+			path = "Example/Pods/Target Support Files/JTabBar";
+			sourceTree = "<group>";
+		};
+		76F62E1AFC2A8EB98A4CE554A92F8163 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				68EA9AEFF5DBCC3B22B721D8819800B6 /* JTabBar */,
+				43EA80F812D17AFFD6B4971A44439A20 /* Pods-JTabBar_Example */,
+				69482C250405B51FAFCDA49E5894A2BB /* Pods-JTabBar_Tests */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		8AB131A08E1B7C0F56C649B3D68F6482 /* Development Pods */ = {
+			isa = PBXGroup;
+			children = (
+				CDFDADF03290D19FAE419EC6408DE2BB /* JTabBar */,
+			);
+			name = "Development Pods";
+			sourceTree = "<group>";
+		};
+		CDFDADF03290D19FAE419EC6408DE2BB /* JTabBar */ = {
+			isa = PBXGroup;
+			children = (
+				5E2EC4DDB727F7C3C922A23FB8016763 /* ReplaceMe.swift */,
+				126CBBF73031E6E42EC4551CD9309022 /* Pod */,
+				6426813066B8077DD0D7CA4981283397 /* Support Files */,
+			);
+			name = JTabBar;
+			path = ../..;
+			sourceTree = "<group>";
+		};
+		CF1408CF629C7361332E53B88F7BD30C = {
+			isa = PBXGroup;
+			children = (
+				9D940727FF8FB9C785EB98E56350EF41 /* Podfile */,
+				8AB131A08E1B7C0F56C649B3D68F6482 /* Development Pods */,
+				D210D550F4EA176C3123ED886F8F87F5 /* Frameworks */,
+				76F62E1AFC2A8EB98A4CE554A92F8163 /* Products */,
+				D5B43B791D8A7BC26518AFD7F4F1E39C /* Targets Support Files */,
+			);
+			sourceTree = "<group>";
+		};
+		D210D550F4EA176C3123ED886F8F87F5 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				578452D2E740E91742655AC8F1636D1F /* iOS */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		D5B43B791D8A7BC26518AFD7F4F1E39C /* Targets Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				EF166C5AFED0F440C1384E021796FC56 /* Pods-JTabBar_Example */,
+				39B0DC9668B5A5935D56D5DA9151A290 /* Pods-JTabBar_Tests */,
+			);
+			name = "Targets Support Files";
+			sourceTree = "<group>";
+		};
+		EF166C5AFED0F440C1384E021796FC56 /* Pods-JTabBar_Example */ = {
+			isa = PBXGroup;
+			children = (
+				8FDAC71F18FCA7EB683458AAF67E6120 /* Pods-JTabBar_Example.modulemap */,
+				029C17C5B7360E3EAE2EAC2D7DDA5042 /* Pods-JTabBar_Example-acknowledgements.markdown */,
+				004277C2DF38FE37D63EB5AC1D03CA70 /* Pods-JTabBar_Example-acknowledgements.plist */,
+				6CADC2448B6EF6649A3A84EE57BE0EB7 /* Pods-JTabBar_Example-dummy.m */,
+				0DA2093345EE756F38E231F5AD5122CE /* Pods-JTabBar_Example-frameworks.sh */,
+				5BA8C083B87AB68CC9ED57D326C86BA8 /* Pods-JTabBar_Example-Info.plist */,
+				BEE863D4F92244B588922035CCD8AF18 /* Pods-JTabBar_Example-umbrella.h */,
+				D97553F24C1528D4B230D2EBA8B5E792 /* Pods-JTabBar_Example.debug.xcconfig */,
+				235762565311A1822F032B8A362B8216 /* Pods-JTabBar_Example.release.xcconfig */,
+			);
+			name = "Pods-JTabBar_Example";
+			path = "Target Support Files/Pods-JTabBar_Example";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		CB1DA85893304F74884A90BF476B18EE /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8FD2ACABEDF73C8CD406918CF5E500CE /* JTabBar-umbrella.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D2157B69FF28D08D8C4CC512C137BCDE /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				434099A3A39DBDE516E341CBC904D332 /* Pods-JTabBar_Example-umbrella.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E70D401E0CEDD05A019200D7A638A133 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F40151C94B6C561C8FE3B855815EB07E /* Pods-JTabBar_Tests-umbrella.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
+/* Begin PBXNativeTarget section */
+		97BB1495455D5DE7487435C3BE8D38F4 /* Pods-JTabBar_Example */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 99B91761E01E3ED009AE5F98E3F37BAB /* Build configuration list for PBXNativeTarget "Pods-JTabBar_Example" */;
+			buildPhases = (
+				D2157B69FF28D08D8C4CC512C137BCDE /* Headers */,
+				8DFA954A3B6ED12D7E00B3CC59271FB4 /* Sources */,
+				596DC3F66E8B8CB1C8622FA34A9B993D /* Frameworks */,
+				29F35CC11976BC4A4A49AF99CE4F7FB5 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				E4D4D0252413008ABFD5942D25C34F90 /* PBXTargetDependency */,
+			);
+			name = "Pods-JTabBar_Example";
+			productName = Pods_JTabBar_Example;
+			productReference = 43EA80F812D17AFFD6B4971A44439A20 /* Pods-JTabBar_Example */;
+			productType = "com.apple.product-type.framework";
+		};
+		D97414A122CE1B3F5B51A78459DA4E54 /* JTabBar */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 68FE9FA1C9CD695DA9D09216AACEB999 /* Build configuration list for PBXNativeTarget "JTabBar" */;
+			buildPhases = (
+				CB1DA85893304F74884A90BF476B18EE /* Headers */,
+				78F313460E73BC08BA30B0FBE7D1F2F5 /* Sources */,
+				53E20AAB1BA4024E6C6B75E6244C2B4A /* Frameworks */,
+				E30D6683430BA7CFB075A0B07CA2F6FE /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = JTabBar;
+			productName = JTabBar;
+			productReference = 68EA9AEFF5DBCC3B22B721D8819800B6 /* JTabBar */;
+			productType = "com.apple.product-type.framework";
+		};
+		DC69BEBF1084A752B4E450F2B851561D /* Pods-JTabBar_Tests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 14064AFBBB5AE356CE93EFF99CCC7D09 /* Build configuration list for PBXNativeTarget "Pods-JTabBar_Tests" */;
+			buildPhases = (
+				E70D401E0CEDD05A019200D7A638A133 /* Headers */,
+				4562AC8D9AD26A5FF90D90AAA4099B52 /* Sources */,
+				9A9A0BCE86D23B35D9FDBEE01FC94CEA /* Frameworks */,
+				086CAD488E5254E9C78452AC912D39DA /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				C314A9D91F2F35ED114F463F2914BFAB /* PBXTargetDependency */,
+			);
+			name = "Pods-JTabBar_Tests";
+			productName = Pods_JTabBar_Tests;
+			productReference = 69482C250405B51FAFCDA49E5894A2BB /* Pods-JTabBar_Tests */;
+			productType = "com.apple.product-type.framework";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		BFDFE7DC352907FC980B868725387E98 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 1240;
+				LastUpgradeCheck = 1240;
+			};
+			buildConfigurationList = 4821239608C13582E20E6DA73FD5F1F9 /* Build configuration list for PBXProject "Pods" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				Base,
+				en,
+			);
+			mainGroup = CF1408CF629C7361332E53B88F7BD30C;
+			productRefGroup = 76F62E1AFC2A8EB98A4CE554A92F8163 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				D97414A122CE1B3F5B51A78459DA4E54 /* JTabBar */,
+				97BB1495455D5DE7487435C3BE8D38F4 /* Pods-JTabBar_Example */,
+				DC69BEBF1084A752B4E450F2B851561D /* Pods-JTabBar_Tests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		086CAD488E5254E9C78452AC912D39DA /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		29F35CC11976BC4A4A49AF99CE4F7FB5 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E30D6683430BA7CFB075A0B07CA2F6FE /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		4562AC8D9AD26A5FF90D90AAA4099B52 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				630386BAECD75045F2596E516E11CE3C /* Pods-JTabBar_Tests-dummy.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		78F313460E73BC08BA30B0FBE7D1F2F5 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				009D38548F7006B5840E988D1642F829 /* JTabBar-dummy.m in Sources */,
+				75E7D00DCDD010AE36207ED7B12B493B /* ReplaceMe.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		8DFA954A3B6ED12D7E00B3CC59271FB4 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				119D9157B7C6A9152F53AFEC49163F9D /* Pods-JTabBar_Example-dummy.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		C314A9D91F2F35ED114F463F2914BFAB /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = "Pods-JTabBar_Example";
+			target = 97BB1495455D5DE7487435C3BE8D38F4 /* Pods-JTabBar_Example */;
+			targetProxy = 6888F0EB048C425E87F373CB4275BE1E /* PBXContainerItemProxy */;
+		};
+		E4D4D0252413008ABFD5942D25C34F90 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = JTabBar;
+			target = D97414A122CE1B3F5B51A78459DA4E54 /* JTabBar */;
+			targetProxy = 77BE2F93EEDF0653AFF55C38DECEEF50 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		19458266E016C2C596E602B06D126A6A /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 8816F9E4536969CDAB1690E698B823CB /* Pods-JTabBar_Tests.release.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "Target Support Files/Pods-JTabBar_Tests/Pods-JTabBar_Tests-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-JTabBar_Tests/Pods-JTabBar_Tests.modulemap";
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		25AD9454612BF454A1E3DC4CD4FA8C6D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"POD_CONFIGURATION_DEBUG=1",
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				STRIP_INSTALLED_PRODUCT = NO;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+				SYMROOT = "${SRCROOT}/../build";
+			};
+			name = Debug;
+		};
+		6427411E98692D33396A5710B876B5AE /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = E6047D3EB31BD3369B6524B6ACD2B4AB /* JTabBar.debug.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GCC_PREFIX_HEADER = "Target Support Files/JTabBar/JTabBar-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/JTabBar/JTabBar-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/JTabBar/JTabBar.modulemap";
+				PRODUCT_MODULE_NAME = JTabBar;
+				PRODUCT_NAME = JTabBar;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		67FE6C722C0C096C55C27F1922AE5BA9 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 430C4DF514C7A23A55CD9AFCA09801F8 /* Pods-JTabBar_Tests.debug.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "Target Support Files/Pods-JTabBar_Tests/Pods-JTabBar_Tests-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-JTabBar_Tests/Pods-JTabBar_Tests.modulemap";
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		6DD299ED50599D6610794EFD6AFF9381 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = D97553F24C1528D4B230D2EBA8B5E792 /* Pods-JTabBar_Example.debug.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "Target Support Files/Pods-JTabBar_Example/Pods-JTabBar_Example-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-JTabBar_Example/Pods-JTabBar_Example.modulemap";
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		9C7DB819CE6297FBCF1B06D0E6479FEB /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 594D79DADE580435059F9D1F010E6337 /* JTabBar.release.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GCC_PREFIX_HEADER = "Target Support Files/JTabBar/JTabBar-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/JTabBar/JTabBar-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/JTabBar/JTabBar.modulemap";
+				PRODUCT_MODULE_NAME = JTabBar;
+				PRODUCT_NAME = JTabBar;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		B713BB082CC498674CC1BD5910ACC1B1 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 235762565311A1822F032B8A362B8216 /* Pods-JTabBar_Example.release.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "Target Support Files/Pods-JTabBar_Example/Pods-JTabBar_Example-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-JTabBar_Example/Pods-JTabBar_Example.modulemap";
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		CA547D2C7E9A8A153DC2B27FBE00B112 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"POD_CONFIGURATION_RELEASE=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				STRIP_INSTALLED_PRODUCT = NO;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_VERSION = 5.0;
+				SYMROOT = "${SRCROOT}/../build";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		14064AFBBB5AE356CE93EFF99CCC7D09 /* Build configuration list for PBXNativeTarget "Pods-JTabBar_Tests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				67FE6C722C0C096C55C27F1922AE5BA9 /* Debug */,
+				19458266E016C2C596E602B06D126A6A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		4821239608C13582E20E6DA73FD5F1F9 /* Build configuration list for PBXProject "Pods" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				25AD9454612BF454A1E3DC4CD4FA8C6D /* Debug */,
+				CA547D2C7E9A8A153DC2B27FBE00B112 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		68FE9FA1C9CD695DA9D09216AACEB999 /* Build configuration list for PBXNativeTarget "JTabBar" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				6427411E98692D33396A5710B876B5AE /* Debug */,
+				9C7DB819CE6297FBCF1B06D0E6479FEB /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		99B91761E01E3ED009AE5F98E3F37BAB /* Build configuration list for PBXNativeTarget "Pods-JTabBar_Example" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				6DD299ED50599D6610794EFD6AFF9381 /* Debug */,
+				B713BB082CC498674CC1BD5910ACC1B1 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = BFDFE7DC352907FC980B868725387E98 /* Project object */;
+}
