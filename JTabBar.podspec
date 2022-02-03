@@ -21,11 +21,11 @@ Pod::Spec.new do |s|
 TODO: Add long description of the pod here.
                        DESC
 
-  s.homepage         = 'https://github.com/장효원/JTabBar'
+  s.homepage         = 'https://github.com/JacksonJang/JTabBar'
   # s.screenshots     = 'www.example.com/screenshots_1', 'www.example.com/screenshots_2'
   s.license          = { :type => 'MIT', :file => 'LICENSE' }
-  s.author           = { '장효원' => 'hyo961015@naver.com' }
-  s.source           = { :git => 'https://github.com/장효원/JTabBar.git', :tag => s.version.to_s }
+  s.author           = { 'JacksonJang' => 'hyo961015@naver.com' }
+  s.source           = { :git => 'https://github.com/JacksonJang/JTabBar.git', :tag => s.version.to_s }
   # s.social_media_url = 'https://twitter.com/<TWITTER_USERNAME>'
 
   s.ios.deployment_target = '9.0'
