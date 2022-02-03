@@ -20,10 +20,6 @@ it, simply add the following line to your Podfile:
 pod 'JTabBar'
 ```
 
-## Author
-
-장효원, hyo961015@naver.com
-
 ## License
 
 JTabBar is available under the MIT license. See the LICENSE file for more info.
