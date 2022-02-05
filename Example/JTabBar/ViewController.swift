@@ -16,9 +16,9 @@ class ViewController: UIViewController {
 
         let backgroundColors = [getRandomColor(), getRandomColor(), getRandomColor(), getRandomColor(), getRandomColor(), getRandomColor(), getRandomColor(), getRandomColor(), getRandomColor(), getRandomColor(), getRandomColor()]
         
-        let viewControllers = backgroundColors.enumerated().map { (index, color: UIColor) -> SubViewController in
-            let controller = SubViewController()
-            controller.view.backgroundColor = color
+        let viewControllers = backgroundColors.enumerated().map { (index, elements) -> JTabViewController in
+            let controller = JTabViewController()
+            controller.view.backgroundColor = elements
             controller.tabName = "Tab\(index)"
             return controller
         }

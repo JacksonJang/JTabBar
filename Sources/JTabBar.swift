@@ -23,7 +23,6 @@ open class JTabBar: UIViewController {
         let view = UICollectionView(frame: CGRect.zero, collectionViewLayout: menuLayout)
         
         view.isScrollEnabled = false
-        view.backgroundColor = .red
         view.translatesAutoresizingMaskIntoConstraints = false
         view.delegate = self
         view.dataSource = self
@@ -42,9 +41,10 @@ open class JTabBar: UIViewController {
         return sv
     }()
     
-    var menuHeight:CGFloat = 50.0
     var viewControllers:[UIViewController] = []
     var parentController:UIViewController?
+    
+    var menuHeight:CGFloat = 50.0
     
     let deviceWidth = UIScreen.main.bounds.width
     let deviceHeight = UIScreen.main.bounds.height
@@ -136,7 +136,8 @@ extension JTabBar: UICollectionViewDelegate, UICollectionViewDataSource, UIColle
     public func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "JTabMenuCell", for: indexPath) as! JTabMenuCell
         
-        cell.backgroundColor = self.viewControllers[indexPath.row].view.backgroundColor
+        let vc = self.viewControllers[indexPath.row] as! JTabViewController
+        cell.titleLabel.text = vc.tabName
         
         return cell
     }
