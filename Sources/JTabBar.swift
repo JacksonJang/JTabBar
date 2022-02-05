@@ -22,7 +22,8 @@ open class JTabBar: UIViewController {
         
         let view = UICollectionView(frame: CGRect.zero, collectionViewLayout: menuLayout)
         
-        view.isScrollEnabled = false
+        view.showsHorizontalScrollIndicator = false
+        view.isScrollEnabled = true
         view.translatesAutoresizingMaskIntoConstraints = false
         view.delegate = self
         view.dataSource = self
@@ -48,6 +49,8 @@ open class JTabBar: UIViewController {
     
     let deviceWidth = UIScreen.main.bounds.width
     let deviceHeight = UIScreen.main.bounds.height
+    
+    var currentIndex:Int = 0
     
     //MARK: - initializer
     public init(viewControllers: [UIViewController]) {
@@ -139,11 +142,19 @@ extension JTabBar: UICollectionViewDelegate, UICollectionViewDataSource, UIColle
         let vc = self.viewControllers[indexPath.row] as! JTabViewController
         cell.titleLabel.text = vc.tabName
         
+        if indexPath.row == self.currentIndex {
+            cell.addBottomLineView()
+        } else {
+            cell.removeBottomLineView()
+        }
+        
         return cell
     }
     
     public func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        self.currentIndex = indexPath.row
         collectionView.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: true)
+        collectionView.reloadData()
     }
     
     public func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
