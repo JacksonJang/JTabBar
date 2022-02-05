@@ -50,6 +50,7 @@ open class JTabBar: UIViewController {
     let deviceWidth = UIScreen.main.bounds.width
     let deviceHeight = UIScreen.main.bounds.height
     
+    var previousIndex:Int = 0
     var currentIndex:Int = 0
     
     //MARK: - initializer
@@ -113,11 +114,16 @@ extension JTabBar {
 extension JTabBar {
     
     func moveToTab(index:Int) {
+        //remove and save previous index
+        removeContentView(index: previousIndex)
+        previousIndex = index
         
+        addContentView(index: index)
     }
     
     func addContentView(index:Int) {
         let vc = viewControllers[index]
+        vc.view.tag = index
         
         vc.willMove(toParentViewController: self)
         
@@ -127,7 +133,11 @@ extension JTabBar {
     }
     
     func removeContentView(index:Int) {
-        
+        for view in self.scrollView.subviews {
+            if view.tag == index {
+                view.removeFromSuperview()
+            }
+        }
     }
 }
 
@@ -152,7 +162,10 @@ extension JTabBar: UICollectionViewDelegate, UICollectionViewDataSource, UIColle
     }
     
     public func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        self.currentIndex = indexPath.row
+        let index = indexPath.row
+        
+        self.currentIndex = index
+        moveToTab(index: index)
         collectionView.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: true)
         collectionView.reloadData()
     }
