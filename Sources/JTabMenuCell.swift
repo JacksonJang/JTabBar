@@ -25,7 +25,7 @@ class JTabMenuCell: UICollectionViewCell {
         return view
     }()
     
-    var bottomLineHeight:CGFloat = 1.0
+    var config:JTabConfig!
     
     override func draw(_ rect: CGRect) {
         super.draw(rect)
@@ -42,7 +42,7 @@ class JTabMenuCell: UICollectionViewCell {
         bottomLineView.leadingAnchor.constraint(equalTo: self.contentView.leadingAnchor).isActive = true
         bottomLineView.bottomAnchor.constraint(equalTo: self.contentView.bottomAnchor).isActive = true
         bottomLineView.trailingAnchor.constraint(equalTo: self.contentView.trailingAnchor).isActive = true
-        bottomLineView.heightAnchor.constraint(equalToConstant: bottomLineHeight).isActive = true
+        bottomLineView.heightAnchor.constraint(equalToConstant: config.menuBottomLineHeight).isActive = true
     }
     
     func removeBottomLineView() {

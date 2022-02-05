@@ -22,9 +22,21 @@ class ViewController: UIViewController {
             controller.tabName = "Tab\(index)"
             return controller
         }
+        
+        let config = createJTabConfig()
      
         //Adding ViewControllers
-        JTabBar(viewControllers: viewControllers).add(parentController: self)
+        JTabBar(viewControllers: viewControllers, config: config).add(parentController: self)
+    }
+    
+    func createJTabConfig() -> JTabConfig {
+        let config = JTabConfig()
+        
+        config.menuHeight = 50.0
+        config.menuBottomLineHeight = 3.0
+        config.menuBottomLineColor = .black
+        
+        return config
     }
     
     func getRandomColor() -> UIColor{

@@ -9,7 +9,7 @@ import UIKit
 
 open class JTabBar: UIViewController {
     
-    lazy var menuLayout:UICollectionViewLayout = {
+    private lazy var menuLayout:UICollectionViewLayout = {
         let layout = UICollectionViewFlowLayout()
         
         layout.minimumLineSpacing = 0
@@ -18,7 +18,7 @@ open class JTabBar: UIViewController {
         return layout
     }()
     
-    lazy var menuView:UICollectionView = {
+    private lazy var menuView:UICollectionView = {
         
         let view = UICollectionView(frame: CGRect.zero, collectionViewLayout: menuLayout)
         
@@ -32,7 +32,7 @@ open class JTabBar: UIViewController {
         return view
     }()
     
-    var scrollView:UIScrollView = {
+    private var scrollView:UIScrollView = {
         let sv = UIScrollView()
         
         sv.isScrollEnabled = false
@@ -42,22 +42,22 @@ open class JTabBar: UIViewController {
         return sv
     }()
     
-    var viewControllers:[UIViewController] = []
-    var parentController:UIViewController?
+    private var viewControllers:[UIViewController] = []
+    private var parentController:UIViewController?
+    private var config:JTabConfig = JTabConfig()
     
-    var menuHeight:CGFloat = 50.0
+    private let deviceWidth = UIScreen.main.bounds.width
+    private let deviceHeight = UIScreen.main.bounds.height
     
-    let deviceWidth = UIScreen.main.bounds.width
-    let deviceHeight = UIScreen.main.bounds.height
-    
-    var previousIndex:Int = 0
-    var currentIndex:Int = 0
+    private var previousIndex:Int = 0
+    private var currentIndex:Int = 0
     
     //MARK: - initializer
-    public init(viewControllers: [UIViewController]) {
+    public init(viewControllers: [UIViewController], config: JTabConfig) {
         super.init(nibName: nil, bundle: nil)
         
         self.viewControllers = viewControllers
+        self.config = config
         
         setupMenu()
     }
@@ -103,7 +103,7 @@ extension JTabBar {
             scrollView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor).isActive = true
         }
         
-        menuView.heightAnchor.constraint(equalToConstant: menuHeight).isActive = true
+        menuView.heightAnchor.constraint(equalToConstant: config.menuHeight).isActive = true
         scrollView.widthAnchor.constraint(equalTo: self.view.widthAnchor).isActive = true
         
         menuView.reloadData()
@@ -151,6 +151,7 @@ extension JTabBar: UICollectionViewDelegate, UICollectionViewDataSource, UIColle
         
         let vc = self.viewControllers[indexPath.row] as! JTabViewController
         cell.titleLabel.text = vc.tabName
+        cell.config = self.config
         
         if indexPath.row == self.currentIndex {
             cell.addBottomLineView()
@@ -175,7 +176,7 @@ extension JTabBar: UICollectionViewDelegate, UICollectionViewDataSource, UIColle
     }
     
     public func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-            return CGSize(width: 50, height: menuHeight)
+        return CGSize(width: 50, height: config.menuHeight)
     }
     
 }
