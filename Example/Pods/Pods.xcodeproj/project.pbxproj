@@ -12,9 +12,12 @@
 		434099A3A39DBDE516E341CBC904D332 /* Pods-JTabBar_Example-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = BEE863D4F92244B588922035CCD8AF18 /* Pods-JTabBar_Example-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		630386BAECD75045F2596E516E11CE3C /* Pods-JTabBar_Tests-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = AD59FD7CDA5C1F9536D6DE39E5FF0788 /* Pods-JTabBar_Tests-dummy.m */; };
 		667719A09D02259AE06BB518F6BCD4F2 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 73010CC983E3809BECEE5348DA1BB8C6 /* Foundation.framework */; };
-		75E7D00DCDD010AE36207ED7B12B493B /* ReplaceMe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E2EC4DDB727F7C3C922A23FB8016763 /* ReplaceMe.swift */; };
 		8FD2ACABEDF73C8CD406918CF5E500CE /* JTabBar-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 91DBA15105B8C7ADB776DA5131569CF7 /* JTabBar-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		9992336D8B3044C97A6D0B0095E20DBC /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 73010CC983E3809BECEE5348DA1BB8C6 /* Foundation.framework */; };
+		E230B7AB27AC7AB40069F321 /* JTabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = E230B7AA27AC7AB40069F321 /* JTabBar.swift */; };
+		E230B7B127ACF9510069F321 /* TabBarScrollDirection.swift in Sources */ = {isa = PBXBuildFile; fileRef = E230B7B027ACF9510069F321 /* TabBarScrollDirection.swift */; };
+		E230B7B627AD02EE0069F321 /* JTabMenuCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E230B7B527AD02EE0069F321 /* JTabMenuCell.swift */; };
+		E230B7B927ADF74B0069F321 /* JTabBarProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = E230B7B827ADF74B0069F321 /* JTabBarProtocol.swift */; };
 		ED3CA4BCDBD7E6E94D48FD9296D784C1 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 73010CC983E3809BECEE5348DA1BB8C6 /* Foundation.framework */; };
 		F40151C94B6C561C8FE3B855815EB07E /* Pods-JTabBar_Tests-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 1E8F66FA8A5D4F884E79F7748377A102 /* Pods-JTabBar_Tests-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 /* End PBXBuildFile section */
@@ -44,29 +47,32 @@
 		1E8F66FA8A5D4F884E79F7748377A102 /* Pods-JTabBar_Tests-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-JTabBar_Tests-umbrella.h"; sourceTree = "<group>"; };
 		235762565311A1822F032B8A362B8216 /* Pods-JTabBar_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-JTabBar_Example.release.xcconfig"; sourceTree = "<group>"; };
 		2D1A479CC81EF390C40A1D37ABFF06C5 /* Pods-JTabBar_Tests-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-JTabBar_Tests-acknowledgements.plist"; sourceTree = "<group>"; };
-		319A90A69865BB5F5CA4278672D05742 /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; path = README.md; sourceTree = "<group>"; };
+		319A90A69865BB5F5CA4278672D05742 /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		412105D2FEAE9C0F82028BBA2A9BA597 /* JTabBar.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = JTabBar.modulemap; sourceTree = "<group>"; };
 		430C4DF514C7A23A55CD9AFCA09801F8 /* Pods-JTabBar_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-JTabBar_Tests.debug.xcconfig"; sourceTree = "<group>"; };
 		43EA80F812D17AFFD6B4971A44439A20 /* Pods-JTabBar_Example */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = "Pods-JTabBar_Example"; path = Pods_JTabBar_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		594D79DADE580435059F9D1F010E6337 /* JTabBar.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = JTabBar.release.xcconfig; sourceTree = "<group>"; };
 		5BA8C083B87AB68CC9ED57D326C86BA8 /* Pods-JTabBar_Example-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-JTabBar_Example-Info.plist"; sourceTree = "<group>"; };
-		5E2EC4DDB727F7C3C922A23FB8016763 /* ReplaceMe.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ReplaceMe.swift; path = JTabBar/Classes/ReplaceMe.swift; sourceTree = "<group>"; };
-		68EA9AEFF5DBCC3B22B721D8819800B6 /* JTabBar */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = JTabBar; path = JTabBar.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		68EA9AEFF5DBCC3B22B721D8819800B6 /* JTabBar.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = JTabBar.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		69482C250405B51FAFCDA49E5894A2BB /* Pods-JTabBar_Tests */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = "Pods-JTabBar_Tests"; path = Pods_JTabBar_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6CADC2448B6EF6649A3A84EE57BE0EB7 /* Pods-JTabBar_Example-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-JTabBar_Example-dummy.m"; sourceTree = "<group>"; };
 		73010CC983E3809BECEE5348DA1BB8C6 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS14.0.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
 		8816F9E4536969CDAB1690E698B823CB /* Pods-JTabBar_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-JTabBar_Tests.release.xcconfig"; sourceTree = "<group>"; };
 		8FDAC71F18FCA7EB683458AAF67E6120 /* Pods-JTabBar_Example.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-JTabBar_Example.modulemap"; sourceTree = "<group>"; };
 		91DBA15105B8C7ADB776DA5131569CF7 /* JTabBar-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "JTabBar-umbrella.h"; sourceTree = "<group>"; };
-		9D940727FF8FB9C785EB98E56350EF41 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		9D940727FF8FB9C785EB98E56350EF41 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		AC103B41BF8DFA0CF82A7B9F78FD966B /* JTabBar-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "JTabBar-dummy.m"; sourceTree = "<group>"; };
 		AD59FD7CDA5C1F9536D6DE39E5FF0788 /* Pods-JTabBar_Tests-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-JTabBar_Tests-dummy.m"; sourceTree = "<group>"; };
 		BEE863D4F92244B588922035CCD8AF18 /* Pods-JTabBar_Example-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-JTabBar_Example-umbrella.h"; sourceTree = "<group>"; };
 		C32D2B8F76DBACA4CD485521D3C8DF3A /* Pods-JTabBar_Tests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-JTabBar_Tests.modulemap"; sourceTree = "<group>"; };
-		C3DB0C173D1026E8FA73AC68E208FDD4 /* JTabBar.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; lastKnownFileType = text; path = JTabBar.podspec; sourceTree = "<group>"; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		C3DB0C173D1026E8FA73AC68E208FDD4 /* JTabBar.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; path = JTabBar.podspec; sourceTree = "<group>"; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		CEBCB3F81F16F29E5C4E07E44145B18D /* Pods-JTabBar_Tests-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-JTabBar_Tests-Info.plist"; sourceTree = "<group>"; };
 		D97553F24C1528D4B230D2EBA8B5E792 /* Pods-JTabBar_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-JTabBar_Example.debug.xcconfig"; sourceTree = "<group>"; };
-		DC767AA613B87C15279C7394E6B819A1 /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; path = LICENSE; sourceTree = "<group>"; };
+		DC767AA613B87C15279C7394E6B819A1 /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
+		E230B7AA27AC7AB40069F321 /* JTabBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JTabBar.swift; sourceTree = "<group>"; };
+		E230B7B027ACF9510069F321 /* TabBarScrollDirection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarScrollDirection.swift; sourceTree = "<group>"; };
+		E230B7B527AD02EE0069F321 /* JTabMenuCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JTabMenuCell.swift; sourceTree = "<group>"; };
+		E230B7B827ADF74B0069F321 /* JTabBarProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JTabBarProtocol.swift; sourceTree = "<group>"; };
 		E6047D3EB31BD3369B6524B6ACD2B4AB /* JTabBar.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = JTabBar.debug.xcconfig; sourceTree = "<group>"; };
 		E7C1895C80BFE0682663CEE7AFF88857 /* JTabBar-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "JTabBar-prefix.pch"; sourceTree = "<group>"; };
 		EB63B333EB3BDD9389A7631D6A72B3FD /* JTabBar-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "JTabBar-Info.plist"; sourceTree = "<group>"; };
@@ -152,7 +158,7 @@
 		76F62E1AFC2A8EB98A4CE554A92F8163 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				68EA9AEFF5DBCC3B22B721D8819800B6 /* JTabBar */,
+				68EA9AEFF5DBCC3B22B721D8819800B6 /* JTabBar.framework */,
 				43EA80F812D17AFFD6B4971A44439A20 /* Pods-JTabBar_Example */,
 				69482C250405B51FAFCDA49E5894A2BB /* Pods-JTabBar_Tests */,
 			);
@@ -170,7 +176,7 @@
 		CDFDADF03290D19FAE419EC6408DE2BB /* JTabBar */ = {
 			isa = PBXGroup;
 			children = (
-				5E2EC4DDB727F7C3C922A23FB8016763 /* ReplaceMe.swift */,
+				E230B7A927AC7A840069F321 /* Sources */,
 				126CBBF73031E6E42EC4551CD9309022 /* Pod */,
 				6426813066B8077DD0D7CA4981283397 /* Support Files */,
 			);
@@ -204,6 +210,33 @@
 				39B0DC9668B5A5935D56D5DA9151A290 /* Pods-JTabBar_Tests */,
 			);
 			name = "Targets Support Files";
+			sourceTree = "<group>";
+		};
+		E230B7A927AC7A840069F321 /* Sources */ = {
+			isa = PBXGroup;
+			children = (
+				E230B7B727ADF73D0069F321 /* Protocol */,
+				E230B7AF27ACF9340069F321 /* Enum */,
+				E230B7AA27AC7AB40069F321 /* JTabBar.swift */,
+				E230B7B527AD02EE0069F321 /* JTabMenuCell.swift */,
+			);
+			path = Sources;
+			sourceTree = "<group>";
+		};
+		E230B7AF27ACF9340069F321 /* Enum */ = {
+			isa = PBXGroup;
+			children = (
+				E230B7B027ACF9510069F321 /* TabBarScrollDirection.swift */,
+			);
+			path = Enum;
+			sourceTree = "<group>";
+		};
+		E230B7B727ADF73D0069F321 /* Protocol */ = {
+			isa = PBXGroup;
+			children = (
+				E230B7B827ADF74B0069F321 /* JTabBarProtocol.swift */,
+			);
+			path = Protocol;
 			sourceTree = "<group>";
 		};
 		EF166C5AFED0F440C1384E021796FC56 /* Pods-JTabBar_Example */ = {
@@ -287,7 +320,7 @@
 			);
 			name = JTabBar;
 			productName = JTabBar;
-			productReference = 68EA9AEFF5DBCC3B22B721D8819800B6 /* JTabBar */;
+			productReference = 68EA9AEFF5DBCC3B22B721D8819800B6 /* JTabBar.framework */;
 			productType = "com.apple.product-type.framework";
 		};
 		DC69BEBF1084A752B4E450F2B851561D /* Pods-JTabBar_Tests */ = {
@@ -317,6 +350,11 @@
 			attributes = {
 				LastSwiftUpdateCheck = 1240;
 				LastUpgradeCheck = 1240;
+				TargetAttributes = {
+					D97414A122CE1B3F5B51A78459DA4E54 = {
+						LastSwiftMigration = 1310;
+					};
+				};
 			};
 			buildConfigurationList = 4821239608C13582E20E6DA73FD5F1F9 /* Build configuration list for PBXProject "Pods" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -375,8 +413,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E230B7B127ACF9510069F321 /* TabBarScrollDirection.swift in Sources */,
+				E230B7AB27AC7AB40069F321 /* JTabBar.swift in Sources */,
+				E230B7B927ADF74B0069F321 /* JTabBarProtocol.swift in Sources */,
+				E230B7B627AD02EE0069F321 /* JTabMenuCell.swift in Sources */,
 				009D38548F7006B5840E988D1642F829 /* JTabBar-dummy.m in Sources */,
-				75E7D00DCDD010AE36207ED7B12B493B /* ReplaceMe.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -509,6 +550,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = E6047D3EB31BD3369B6524B6ACD2B4AB /* JTabBar.debug.xcconfig */;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
@@ -528,6 +570,7 @@
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
@@ -603,6 +646,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 594D79DADE580435059F9D1F010E6337 /* JTabBar.release.xcconfig */;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
@@ -718,8 +762,7 @@
 				MTL_FAST_MATH = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				STRIP_INSTALLED_PRODUCT = NO;
-				SWIFT_COMPILATION_MODE = wholemodule;
-				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				SWIFT_VERSION = 5.0;
 				SYMROOT = "${SRCROOT}/../build";
 			};
