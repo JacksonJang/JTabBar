@@ -16,17 +16,21 @@ class ViewController: UIViewController {
 
         let backgroundColors = [getRandomColor(), getRandomColor(), getRandomColor(), getRandomColor(), getRandomColor(), getRandomColor(), getRandomColor(), getRandomColor(), getRandomColor(), getRandomColor(), getRandomColor()]
         
-        let viewControllers = backgroundColors.enumerated().map { (index, elements) -> JTabViewController in
-            let controller = JTabViewController()
+        let viewControllers = backgroundColors.enumerated().map { (index, elements) -> UIViewController in
+            let controller = UIViewController()
             controller.view.backgroundColor = elements
-            controller.tabName = "Tab\(index)"
             return controller
         }
         
         let config = createJTabConfig()
-     
+        var menus:[String] = []
+        
+        for index in 0..<viewControllers.count {
+            menus.append("Tab\(index)")
+        }
+        
         //Adding ViewControllers
-        JTabBar(viewControllers: viewControllers, config: config).add(parentController: self)
+        JTabBar(viewControllers: viewControllers,menus: menus, config: config).add(parentController: self)
     }
     
     func createJTabConfig() -> JTabConfig {

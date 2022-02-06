@@ -55,6 +55,7 @@ open class JTabBar: UIViewController {
     }()
     
     private var viewControllers:[UIViewController] = []
+    private var menus:[String] = []
     private var parentController:UIViewController?
     private var config:JTabConfig = JTabConfig()
     
@@ -65,10 +66,11 @@ open class JTabBar: UIViewController {
     private var currentIndex:Int = 0
     
     //MARK: - initializer
-    public init(viewControllers: [UIViewController], config: JTabConfig) {
+    public init(viewControllers: [UIViewController], menus:[String], config: JTabConfig) {
         super.init(nibName: nil, bundle: nil)
         
         self.viewControllers = viewControllers
+        self.menus = menus
         self.config = config
         
         setupMenu()
@@ -186,8 +188,7 @@ extension JTabBar: UICollectionViewDelegate, UICollectionViewDataSource, UIColle
     public func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "JTabMenuCell", for: indexPath) as! JTabMenuCell
         
-        let vc = self.viewControllers[indexPath.row] as! JTabViewController
-        cell.titleLabel.text = vc.tabName
+        cell.titleLabel.text = menus[indexPath.row]
         cell.config = self.config
         
 //        if indexPath.row == self.currentIndex {
