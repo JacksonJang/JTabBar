@@ -32,6 +32,15 @@ open class JTabBar: UIViewController {
         return view
     }()
     
+    private lazy var borderMenuBottomView:UIView = {
+        let view = UIView()
+        
+        view.backgroundColor = .black
+        view.frame = CGRect(x: 0, y: config.menuHeight - config.menuBottomLineHeight, width: 50, height: config.menuBottomLineHeight)
+        
+        return view
+    }()
+    
     private lazy var scrollView:UIScrollView = {
         let sv = UIScrollView()
         
@@ -87,13 +96,14 @@ extension JTabBar {
     
     private func setupMenu() {
         self.view.addSubview(menuView)
+        self.menuView.addSubview(borderMenuBottomView)
         self.view.addSubview(scrollView)
         
         if #available(iOS 11.0, *) {
             menuView.topAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.topAnchor).isActive = true
             menuView.leadingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.leadingAnchor).isActive = true
             menuView.trailingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.trailingAnchor).isActive = true
-            
+
             scrollView.topAnchor.constraint(equalTo: menuView.bottomAnchor).isActive = true
             scrollView.leadingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.leadingAnchor).isActive = true
             scrollView.trailingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.trailingAnchor).isActive = true
@@ -102,7 +112,7 @@ extension JTabBar {
             menuView.topAnchor.constraint(equalTo: self.view.topAnchor).isActive = true
             menuView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor).isActive = true
             menuView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor).isActive = true
-            
+
             scrollView.topAnchor.constraint(equalTo: menuView.bottomAnchor).isActive = true
             scrollView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor).isActive = true
             scrollView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor).isActive = true
@@ -127,9 +137,18 @@ extension JTabBar {
 //MARK: - Tab Function
 extension JTabBar {
     private func moveToTab(index:Int) {
-        let offset = CGPoint(x: Int(self.scrollView.frame.width) * index, y: 0)
-        scrollView.setContentOffset(offset, animated: true)
-        menuView.scrollToItem(at: IndexPath(row: index, section: 0), at: .centeredHorizontally, animated: true)
+        let indexPath = IndexPath(row: index, section: 0)
+        let scrollViewOffset = CGPoint(x: Int(self.scrollView.frame.width) * index, y: 0)
+        let frame = menuView.layoutAttributesForItem(at: indexPath)?.frame
+        let point = CGPoint(x: frame!.origin.x, y: config.menuHeight - config.menuBottomLineHeight)
+        
+        scrollView.setContentOffset(scrollViewOffset, animated: true)
+        menuView.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: true)
+        
+        UIView.animate(withDuration: 0.3, animations: {
+            self.borderMenuBottomView.frame.origin = point
+        }, completion: nil)
+        
         menuView.reloadData()
     }
     
@@ -171,11 +190,11 @@ extension JTabBar: UICollectionViewDelegate, UICollectionViewDataSource, UIColle
         cell.titleLabel.text = vc.tabName
         cell.config = self.config
         
-        if indexPath.row == self.currentIndex {
-            cell.addBottomLineView()
-        } else {
-            cell.removeBottomLineView()
-        }
+//        if indexPath.row == self.currentIndex {
+//            cell.addBottomLineView()
+//        } else {
+//            cell.removeBottomLineView()
+//        }
         
         return cell
     }
@@ -188,24 +207,26 @@ extension JTabBar: UICollectionViewDelegate, UICollectionViewDataSource, UIColle
     }
     
     public func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-            return UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
+        return UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
     }
     
     public func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return CGSize(width: 50, height: config.menuHeight)
     }
-    
 }
 
 extension JTabBar: UIScrollViewDelegate {
+    
     public func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
-        let currentIndex = Int(round(scrollView.contentOffset.x / deviceWidth))
+        if self.scrollView == scrollView {
+            let currentIndex = Int(round(scrollView.contentOffset.x / deviceWidth))
 
-        self.currentIndex = currentIndex
-        
-        //It's status that changed index
-        if CGFloat(currentIndex) * deviceWidth == scrollView.contentOffset.x {
-            moveToTab(index: currentIndex)
+            self.currentIndex = currentIndex
+            
+            //It's status that changed index
+            if CGFloat(currentIndex) * deviceWidth == scrollView.contentOffset.x {
+                moveToTab(index: currentIndex)
+            }
         }
     }
 }
