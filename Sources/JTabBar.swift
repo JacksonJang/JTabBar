@@ -32,7 +32,7 @@ open class JTabBar: UIViewController {
         return view
     }()
     
-    private var scrollView:UIScrollView = {
+    private lazy var scrollView:UIScrollView = {
         let sv = UIScrollView()
         
         sv.isScrollEnabled = true
@@ -40,6 +40,7 @@ open class JTabBar: UIViewController {
         sv.showsVerticalScrollIndicator = false
         sv.showsHorizontalScrollIndicator = false
         sv.translatesAutoresizingMaskIntoConstraints = false
+        sv.delegate = self
         
         return sv
     }()
@@ -83,8 +84,8 @@ extension JTabBar {
         super.viewDidLayoutSubviews()
         scrollView.contentSize = CGSize(width: self.view.frame.width * CGFloat(viewControllers.count), height: 0)
     }
+    
     private func setupMenu() {
-        
         self.view.addSubview(menuView)
         self.view.addSubview(scrollView)
         
@@ -113,34 +114,18 @@ extension JTabBar {
         
         menuView.reloadData()
         
-        setupGesture()
-        
         addContentView(index: 0)
         addContentView(index: 1)
-    }
-    
-    private func setupGesture(){
-//        let leftGesture = UISwipeGestureRecognizer(target: self, action: #selector(test(sender:)))
-//        leftGesture.direction = .left
-//
-//        self.scrollView.addGestureRecognizer(leftGesture)
-    }
-    
-    @objc
-    private func test(sender: UIGestureRecognizer){
-        
     }
 }
 
 //MARK: - Tab Function
 extension JTabBar {
-    
     private func moveToTab(index:Int) {
-        //remove and save previous index
-        removeContentView(index: previousIndex)
-        previousIndex = index
-        
-        addContentView(index: index)
+        let offset = CGPoint(x: Int(self.scrollView.frame.width) * index, y: 0)
+        scrollView.setContentOffset(offset, animated: true)
+        menuView.scrollToItem(at: IndexPath(row: index, section: 0), at: .centeredHorizontally, animated: true)
+        menuView.reloadData()
     }
     
     private func addContentView(index:Int) {
@@ -195,8 +180,6 @@ extension JTabBar: UICollectionViewDelegate, UICollectionViewDataSource, UIColle
         
         self.currentIndex = index
         moveToTab(index: index)
-        collectionView.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: true)
-        collectionView.reloadData()
     }
     
     public func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
@@ -207,4 +190,17 @@ extension JTabBar: UICollectionViewDelegate, UICollectionViewDataSource, UIColle
         return CGSize(width: 50, height: config.menuHeight)
     }
     
+}
+
+extension JTabBar: UIScrollViewDelegate {
+    public func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        let currentIndex = Int(round(scrollView.contentOffset.x / deviceWidth))
+
+        self.currentIndex = currentIndex
+        
+        //It's status that changed index
+        if CGFloat(currentIndex) * deviceWidth == scrollView.contentOffset.x {
+            moveToTab(index: currentIndex)
+        }
+    }
 }
