@@ -198,7 +198,7 @@ extension JTabBar: UICollectionViewDelegate, UICollectionViewDataSource, UIColle
 }
 
 extension JTabBar: UIScrollViewDelegate {
-    public func scrollViewDidScroll(_ scrollView: UIScrollView) {
+    public func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
         let currentIndex = Int(round(scrollView.contentOffset.x / deviceWidth))
 
         self.currentIndex = currentIndex
