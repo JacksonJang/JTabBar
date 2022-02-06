@@ -221,8 +221,8 @@
 			children = (
 				E230B7B727ADF73D0069F321 /* Protocol */,
 				E230B7AF27ACF9340069F321 /* Enum */,
+				E230B7C027AF613B0069F321 /* Cell */,
 				E230B7AA27AC7AB40069F321 /* JTabBar.swift */,
-				E230B7B527AD02EE0069F321 /* JTabMenuCell.swift */,
 				E230B7BC27ADFEAF0069F321 /* JTabViewController.swift */,
 				E230B7BE27AE21EB0069F321 /* JTabConfig.swift */,
 			);
@@ -243,6 +243,14 @@
 				E230B7B827ADF74B0069F321 /* JTabBarProtocol.swift */,
 			);
 			path = Protocol;
+			sourceTree = "<group>";
+		};
+		E230B7C027AF613B0069F321 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				E230B7B527AD02EE0069F321 /* JTabMenuCell.swift */,
+			);
+			path = Cell;
 			sourceTree = "<group>";
 		};
 		EF166C5AFED0F440C1384E021796FC56 /* Pods-JTabBar_Example */ = {

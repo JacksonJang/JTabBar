@@ -35,8 +35,10 @@ open class JTabBar: UIViewController {
     private var scrollView:UIScrollView = {
         let sv = UIScrollView()
         
-        sv.isScrollEnabled = false
+        sv.isScrollEnabled = true
         sv.isPagingEnabled = true
+        sv.showsVerticalScrollIndicator = false
+        sv.showsHorizontalScrollIndicator = false
         sv.translatesAutoresizingMaskIntoConstraints = false
         
         return sv
@@ -73,12 +75,15 @@ open class JTabBar: UIViewController {
         parentController.view.addSubview(self.view)
         didMove(toParentViewController: parentController)
     }
-    
 }
 
 //MARK: - Creating Tab
 extension JTabBar {
-    func setupMenu() {
+    open override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        scrollView.contentSize = CGSize(width: self.view.frame.width * CGFloat(viewControllers.count), height: 0)
+    }
+    private func setupMenu() {
         
         self.view.addSubview(menuView)
         self.view.addSubview(scrollView)
@@ -107,13 +112,30 @@ extension JTabBar {
         scrollView.widthAnchor.constraint(equalTo: self.view.widthAnchor).isActive = true
         
         menuView.reloadData()
+        
+        setupGesture()
+        
+        addContentView(index: 0)
+        addContentView(index: 1)
+    }
+    
+    private func setupGesture(){
+//        let leftGesture = UISwipeGestureRecognizer(target: self, action: #selector(test(sender:)))
+//        leftGesture.direction = .left
+//
+//        self.scrollView.addGestureRecognizer(leftGesture)
+    }
+    
+    @objc
+    private func test(sender: UIGestureRecognizer){
+        
     }
 }
 
 //MARK: - Tab Function
 extension JTabBar {
     
-    func moveToTab(index:Int) {
+    private func moveToTab(index:Int) {
         //remove and save previous index
         removeContentView(index: previousIndex)
         previousIndex = index
@@ -121,18 +143,24 @@ extension JTabBar {
         addContentView(index: index)
     }
     
-    func addContentView(index:Int) {
+    private func addContentView(index:Int) {
         let vc = viewControllers[index]
         vc.view.tag = index
         
         vc.willMove(toParentViewController: self)
         
         self.addChildViewController(vc)
+        
+        let x = deviceWidth * CGFloat(index)
+        let y = 0.0
+        
+        vc.view.frame = CGRect(x: x, y: y, width: self.scrollView.frame.width, height: self.scrollView.frame.height)
+        
         self.scrollView.addSubview(vc.view)
         vc.didMove(toParentViewController: self)
     }
     
-    func removeContentView(index:Int) {
+    private func removeContentView(index:Int) {
         for view in self.scrollView.subviews {
             if view.tag == index {
                 view.removeFromSuperview()
