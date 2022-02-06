@@ -114,8 +114,13 @@ extension JTabBar {
         
         menuView.reloadData()
         
-        addContentView(index: 0)
-        addContentView(index: 1)
+        setupContentView()
+    }
+    
+    private func setupContentView(){
+        for (index, item) in viewControllers.enumerated() {
+            addContentView(index: index)
+        }
     }
 }
 
