@@ -64,7 +64,7 @@ open class JTabBar: UIViewController {
     
     private var previousIndex:Int = 0
     private var currentIndex:Int = 0
-    
+
     //MARK: - initializer
     public init(viewControllers: [UIViewController], config: JTabConfig) {
         super.init(nibName: nil, bundle: nil)
@@ -156,7 +156,7 @@ extension JTabBar {
         scrollView.setContentOffset(scrollViewOffset, animated: true)
         menuView.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: true)
         
-        UIView.animate(withDuration: 0.3, animations: {
+        UIView.animate(withDuration: 0.2, animations: {
             self.borderMenuBottomView.frame.origin = point
         }, completion: nil)
         
@@ -231,6 +231,20 @@ extension JTabBar: UIScrollViewDelegate {
             if CGFloat(currentIndex) * deviceWidth == scrollView.contentOffset.x {
                 moveToTab(index: currentIndex)
             }
+        }
+    }
+    
+    public func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        if self.scrollView == scrollView {
+            print(scrollView.contentOffset.x)
+            
+            //50 = scrollView.contentOffset.x / 390 * 50
+            let x = scrollView.contentOffset.x / 390 * 50
+            let point = CGPoint(x: x, y: config.menuHeight - config.menuBottomLineHeight)
+            
+            UIView.animate(withDuration: 0.2, animations: {
+                self.borderMenuBottomView.frame.origin = point
+            }, completion: nil)
         }
     }
 }
