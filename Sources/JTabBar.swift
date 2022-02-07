@@ -135,7 +135,7 @@ extension JTabBar {
     }
     
     private func setupContentView(){
-        for (index, item) in viewControllers.enumerated() {
+        for (index, _) in viewControllers.enumerated() {
             addContentView(index: index)
         }
     }
@@ -199,13 +199,7 @@ extension JTabBar: UICollectionViewDelegate, UICollectionViewDataSource, UIColle
         
         cell.titleLabel.text = menus[indexPath.row]
         cell.config = self.config
-        
-//        if indexPath.row == self.currentIndex {
-//            cell.addBottomLineView()
-//        } else {
-//            cell.removeBottomLineView()
-//        }
-        
+
         return cell
     }
     

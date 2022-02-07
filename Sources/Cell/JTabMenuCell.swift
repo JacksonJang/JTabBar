@@ -16,15 +16,6 @@ class JTabMenuCell: UICollectionViewCell {
         return label
     }()
     
-    let bottomLineView: UIView = {
-        let view = UIView()
-        
-        view.backgroundColor = UIColor.black
-        view.translatesAutoresizingMaskIntoConstraints = false
-        
-        return view
-    }()
-    
     var config:JTabConfig!
     
     override func draw(_ rect: CGRect) {
@@ -34,22 +25,6 @@ class JTabMenuCell: UICollectionViewCell {
         
         titleLabel.centerXAnchor.constraint(equalTo: self.centerXAnchor).isActive = true
         titleLabel.centerYAnchor.constraint(equalTo: self.centerYAnchor).isActive = true
-    }
-    
-    func addBottomLineView() {
-        self.contentView.addSubview(bottomLineView)
-        
-        bottomLineView.leadingAnchor.constraint(equalTo: self.contentView.leadingAnchor).isActive = true
-        bottomLineView.bottomAnchor.constraint(equalTo: self.contentView.bottomAnchor).isActive = true
-        bottomLineView.trailingAnchor.constraint(equalTo: self.contentView.trailingAnchor).isActive = true
-        bottomLineView.heightAnchor.constraint(equalToConstant: config.menuBottomLineHeight).isActive = true
-    }
-    
-    func removeBottomLineView() {
-        bottomLineView.removeFromSuperview()
-        for constraint in bottomLineView.constraints {
-            bottomLineView.removeConstraint(constraint)
-        }
     }
 }
 
