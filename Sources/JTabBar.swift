@@ -54,10 +54,10 @@ open class JTabBar: UIViewController {
         return sv
     }()
     
-    private var viewControllers:[UIViewController] = []
-    private var menus:[String] = []
+    private var viewControllers:[UIViewController]!
+    private var menus:[String]!
     private var parentController:UIViewController?
-    private var config:JTabConfig = JTabConfig()
+    private var config:JTabConfig!
     
     private let deviceWidth = UIScreen.main.bounds.width
     private let deviceHeight = UIScreen.main.bounds.height
@@ -66,14 +66,19 @@ open class JTabBar: UIViewController {
     private var currentIndex:Int = 0
     
     //MARK: - initializer
-    public init(viewControllers: [UIViewController], menus:[String], config: JTabConfig) {
+    public init(viewControllers: [UIViewController], config: JTabConfig) {
         super.init(nibName: nil, bundle: nil)
         
         self.viewControllers = viewControllers
-        self.menus = menus
+        self.menus = config.menus
         self.config = config
         
-        setupMenu()
+        switch config.menuType {
+        case .button:
+            setupButtonTab()
+        case .variable:
+            setupVariableTab()
+        }
     }
     
     required public init?(coder: NSCoder) {
@@ -96,7 +101,7 @@ extension JTabBar {
         scrollView.contentSize = CGSize(width: self.view.frame.width * CGFloat(viewControllers.count), height: 0)
     }
     
-    private func setupMenu() {
+    private func setupButtonTab() {
         self.view.addSubview(menuView)
         self.menuView.addSubview(borderMenuBottomView)
         self.view.addSubview(scrollView)
@@ -133,6 +138,10 @@ extension JTabBar {
         for (index, item) in viewControllers.enumerated() {
             addContentView(index: index)
         }
+    }
+    
+    private func setupVariableTab(){
+        
     }
 }
 

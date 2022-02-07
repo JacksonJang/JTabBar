@@ -1,5 +1,5 @@
 //
-//  ViewController.swift
+//  ButtonTabViewController.swift
 //  JTabBar
 //
 //  Created by 장효원 on 02/03/2022.
@@ -9,7 +9,7 @@
 import UIKit
 import JTabBar
 
-class ViewController: UIViewController {
+class ButtonTabViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -22,20 +22,24 @@ class ViewController: UIViewController {
             return controller
         }
         
-        let config = createJTabConfig()
+        let config = createJTabConfig(viewControllers: viewControllers)
+        
+        //Adding ViewControllers
+        JTabBar(viewControllers: viewControllers,
+                config: config
+        ).add(parentController: self)
+    }
+    
+    func createJTabConfig(viewControllers:[UIViewController]) -> JTabConfig {
         var menus:[String] = []
         
         for index in 0..<viewControllers.count {
             menus.append("Tab\(index)")
         }
         
-        //Adding ViewControllers
-        JTabBar(viewControllers: viewControllers,menus: menus, config: config).add(parentController: self)
-    }
-    
-    func createJTabConfig() -> JTabConfig {
-        let config = JTabConfig()
+        let config = JTabConfig(menus: menus)
         
+        config.menuType = .button
         config.menuHeight = 50.0
         config.menuBottomLineHeight = 3.0
         config.menuBottomLineColor = .black

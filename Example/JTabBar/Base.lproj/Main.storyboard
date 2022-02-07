@@ -1,30 +1,129 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="vXZ-lx-hvc">
-    <device id="retina4_7" orientation="portrait">
-        <adaptation id="fullscreen"/>
-    </device>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19455" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="9jS-vf-7g1">
+    <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19454"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
-        <scene sceneID="ufC-wZ-h7g">
+        <!--JTabBar Example-->
+        <scene sceneID="kFH-5H-our">
             <objects>
-                <viewController id="vXZ-lx-hvc" customClass="ViewController" customModule="JTabBar_Example" customModuleProvider="target" sceneMemberID="viewController">
+                <navigationController title="JTabBar Example" id="9jS-vf-7g1" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="dXv-A0-hLq">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="gy0-mI-dTA" kind="relationship" relationship="rootViewController" id="f52-NY-zDt"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="EOF-ij-tBC" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-875" y="84"/>
+        </scene>
+        <!--JTabBar Example Table-->
+        <scene sceneID="ICV-e2-CI8">
+            <objects>
+                <viewController title="JTabBar Example Table" id="gy0-mI-dTA" customClass="MainViewController" customModule="JTabBar_Example" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="jyV-Pf-zRb"/>
-                        <viewControllerLayoutGuide type="bottom" id="2fi-mo-0CV"/>
+                        <viewControllerLayoutGuide type="top" id="4a9-jE-9gn"/>
+                        <viewControllerLayoutGuide type="bottom" id="IQ9-J0-WtN"/>
                     </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="kh9-bI-dsS">
+                    <view key="view" contentMode="scaleToFill" id="Zdu-R0-AJD">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="69x-yH-J3v">
+                                <rect key="frame" x="16" y="44" width="343" height="623"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="MainViewCell" id="Cdm-XB-LII" customClass="MainViewCell" customModule="JTabBar_Example" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="44.5" width="343" height="43.5"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Cdm-XB-LII" id="ZK2-bA-SxW">
+                                            <rect key="frame" x="0.0" y="0.0" width="343" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ber-u0-PDc">
+                                                    <rect key="frame" x="20" y="11.5" width="303" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="ber-u0-PDc" firstAttribute="centerY" secondItem="ZK2-bA-SxW" secondAttribute="centerY" id="PAc-vB-WaX"/>
+                                                <constraint firstAttribute="trailing" secondItem="ber-u0-PDc" secondAttribute="trailing" constant="20" id="UWj-4G-toi"/>
+                                                <constraint firstItem="ber-u0-PDc" firstAttribute="leading" secondItem="ZK2-bA-SxW" secondAttribute="leading" constant="20" id="vPq-Nq-Ksp"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="titleLabel" destination="ber-u0-PDc" id="QKZ-EH-NBA"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="69x-yH-J3v" firstAttribute="top" secondItem="4a9-jE-9gn" secondAttribute="bottom" id="CQI-Cw-fr3"/>
+                            <constraint firstItem="IQ9-J0-WtN" firstAttribute="top" secondItem="69x-yH-J3v" secondAttribute="bottom" id="Coe-Vh-4eS"/>
+                            <constraint firstItem="69x-yH-J3v" firstAttribute="leading" secondItem="Zdu-R0-AJD" secondAttribute="leadingMargin" id="J8r-xC-NXy"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="69x-yH-J3v" secondAttribute="trailing" id="t0S-Ml-5wM"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="JTabBar Example" id="6S6-Hp-IbS"/>
+                    <connections>
+                        <outlet property="tableView" destination="69x-yH-J3v" id="Vss-HZ-tyw"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Wgr-CJ-wTw" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-127" y="83"/>
+        </scene>
+        <!--Button Tab View Controller-->
+        <scene sceneID="Iso-KB-EEr">
+            <objects>
+                <viewController storyboardIdentifier="ButtonTabViewController" id="cSv-YW-Yju" customClass="ButtonTabViewController" customModule="JTabBar_Example" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="52H-0d-JmB"/>
+                        <viewControllerLayoutGuide type="bottom" id="Cho-SJ-n7F"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="4xa-4F-duT">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="tsB-JB-SBm" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="-127" y="-618"/>
+        </scene>
+        <!--Variable Tab View Controller-->
+        <scene sceneID="YWY-YB-rvM">
+            <objects>
+                <viewController storyboardIdentifier="VariableTabViewController" id="aQE-8q-jwS" customClass="VariableTabViewController" customModule="JTabBar_Example" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="l3H-YX-9PK"/>
+                        <viewControllerLayoutGuide type="bottom" id="NLw-E5-GTt"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="mcg-AN-2Nu">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="qDy-nC-XKc" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="594" y="-618"/>
         </scene>
     </scenes>
+    <resources>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
 </document>
