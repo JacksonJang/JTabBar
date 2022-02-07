@@ -236,8 +236,6 @@ extension JTabBar: UIScrollViewDelegate {
     
     public func scrollViewDidScroll(_ scrollView: UIScrollView) {
         if self.scrollView == scrollView {
-            print(scrollView.contentOffset.x)
-            
             //50 = scrollView.contentOffset.x / 390 * 50
             let x = scrollView.contentOffset.x / 390 * 50
             let point = CGPoint(x: x, y: config.menuHeight - config.menuBottomLineHeight)
