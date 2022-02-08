@@ -36,7 +36,11 @@ open class JTabBar: UIViewController {
         let view = UIView()
         
         view.backgroundColor = .black
-        view.frame = CGRect(x: 0, y: config.menuHeight - config.menuBottomLineHeight, width: 50, height: config.menuBottomLineHeight)
+        view.frame = CGRect(x: 0,
+                            y: config.menuHeight - config.menuBottomLineHeight,
+                            width: 50,
+                            height: config.menuBottomLineHeight
+        )
         
         return view
     }()
@@ -150,15 +154,9 @@ extension JTabBar {
     private func moveToTab(index:Int) {
         let indexPath = IndexPath(row: index, section: 0)
         let scrollViewOffset = CGPoint(x: Int(self.scrollView.frame.width) * index, y: 0)
-        let frame = menuView.layoutAttributesForItem(at: indexPath)?.frame
-        let point = CGPoint(x: frame!.origin.x, y: config.menuHeight - config.menuBottomLineHeight)
         
         scrollView.setContentOffset(scrollViewOffset, animated: true)
         menuView.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: true)
-        
-        UIView.animate(withDuration: 0.2, animations: {
-            self.borderMenuBottomView.frame.origin = point
-        }, completion: nil)
         
         menuView.reloadData()
     }
@@ -236,11 +234,10 @@ extension JTabBar: UIScrollViewDelegate {
     
     public func scrollViewDidScroll(_ scrollView: UIScrollView) {
         if self.scrollView == scrollView {
-            //50 = scrollView.contentOffset.x / 390 * 50
-            let x = scrollView.contentOffset.x / 390 * 50
+            let x = scrollView.contentOffset.x / UIScreen.main.bounds.width * 50
             let point = CGPoint(x: x, y: config.menuHeight - config.menuBottomLineHeight)
             
-            UIView.animate(withDuration: 0.2, animations: {
+            UIView.animate(withDuration: 0.1, animations: {
                 self.borderMenuBottomView.frame.origin = point
             }, completion: nil)
         }
