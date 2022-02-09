@@ -156,7 +156,6 @@ extension JTabBar {
         let scrollViewOffset = CGPoint(x: Int(self.scrollView.frame.width) * index, y: 0)
         
         scrollView.setContentOffset(scrollViewOffset, animated: true)
-//        menuView.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: true)
         
         menuView.reloadData()
     }
@@ -225,7 +224,7 @@ extension JTabBar: UIScrollViewDelegate {
             let point = CGPoint(x: x, y: config.menuHeight - config.menuBottomLineHeight)
             let numberOfItems = menuView.dataSource!.collectionView(menuView.self, numberOfItemsInSection: 0)
             let currentIndex = Int(round(scrollView.contentOffset.x / scrollView.frame.width))
-            let scrollableWidth = 2 * scrollView.frame.width - (CGFloat(numberOfItems) * 50.0)
+            let scrollableWidth = scrollView.frame.width - (CGFloat(numberOfItems) * 50 - scrollView.frame.width)
             
             //Change Bottom Line Location
             UIView.animate(withDuration: 0.1, animations: {
@@ -233,7 +232,7 @@ extension JTabBar: UIScrollViewDelegate {
             }, completion: nil)
             
             let check:Bool = scrollView.contentOffset.x >= 0 && scrollView.contentOffset.x <  scrollView.frame.width * CGFloat(numberOfItems)
-            let check2:Bool = menuView.layoutAttributesForItem(at: IndexPath(row: currentIndex, section: 0))!.frame.origin.x + 50 < scrollableWidth
+            let check2:Bool = menuView.layoutAttributesForItem(at: IndexPath(row: currentIndex, section: 0))!.frame.origin.x < scrollableWidth
 
             if check && check2 {
                 var x = max(scrollView.contentOffset.x / scrollView.frame.width - 1, 0)
