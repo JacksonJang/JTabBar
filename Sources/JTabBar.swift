@@ -227,7 +227,7 @@ extension JTabBar: UIScrollViewDelegate {
             
             //It's status that changed index
             if CGFloat(currentIndex) * deviceWidth == scrollView.contentOffset.x {
-                moveToTab(index: currentIndex)
+//                moveToTab(index: currentIndex)
             }
         }
     }
@@ -240,6 +240,16 @@ extension JTabBar: UIScrollViewDelegate {
             UIView.animate(withDuration: 0.1, animations: {
                 self.borderMenuBottomView.frame.origin = point
             }, completion: nil)
+            
+            let numberOfItems = menuView.dataSource!.collectionView(menuView.self, numberOfItemsInSection: 0)
+            print("numberOfItems : ", numberOfItems)
+            
+            if scrollView.contentOffset.x > deviceWidth {
+                let temp = scrollView.contentOffset.x / deviceWidth
+                let menuPoint = CGPoint(x: (temp - 1) * 50 , y: 0)
+                print("scrollView.contentOffset.x : ", scrollView.contentOffset.x)
+                self.menuView.setContentOffset(menuPoint, animated: false)
+            }
         }
     }
 }

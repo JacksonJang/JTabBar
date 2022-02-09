@@ -15,7 +15,6 @@
 		8FD2ACABEDF73C8CD406918CF5E500CE /* JTabBar-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 91DBA15105B8C7ADB776DA5131569CF7 /* JTabBar-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		9992336D8B3044C97A6D0B0095E20DBC /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 73010CC983E3809BECEE5348DA1BB8C6 /* Foundation.framework */; };
 		E230B7AB27AC7AB40069F321 /* JTabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = E230B7AA27AC7AB40069F321 /* JTabBar.swift */; };
-		E230B7B127ACF9510069F321 /* TabBarScrollDirection.swift in Sources */ = {isa = PBXBuildFile; fileRef = E230B7B027ACF9510069F321 /* TabBarScrollDirection.swift */; };
 		E230B7B627AD02EE0069F321 /* JTabMenuCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E230B7B527AD02EE0069F321 /* JTabMenuCell.swift */; };
 		E230B7B927ADF74B0069F321 /* JTabBarProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = E230B7B827ADF74B0069F321 /* JTabBarProtocol.swift */; };
 		E230B7BF27AE21EB0069F321 /* JTabConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = E230B7BE27AE21EB0069F321 /* JTabConfig.swift */; };
@@ -72,7 +71,6 @@
 		D97553F24C1528D4B230D2EBA8B5E792 /* Pods-JTabBar_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-JTabBar_Example.debug.xcconfig"; sourceTree = "<group>"; };
 		DC767AA613B87C15279C7394E6B819A1 /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
 		E230B7AA27AC7AB40069F321 /* JTabBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JTabBar.swift; sourceTree = "<group>"; };
-		E230B7B027ACF9510069F321 /* TabBarScrollDirection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarScrollDirection.swift; sourceTree = "<group>"; };
 		E230B7B527AD02EE0069F321 /* JTabMenuCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JTabMenuCell.swift; sourceTree = "<group>"; };
 		E230B7B827ADF74B0069F321 /* JTabBarProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JTabBarProtocol.swift; sourceTree = "<group>"; };
 		E230B7BE27AE21EB0069F321 /* JTabConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JTabConfig.swift; sourceTree = "<group>"; };
@@ -231,7 +229,6 @@
 		E230B7AF27ACF9340069F321 /* Enum */ = {
 			isa = PBXGroup;
 			children = (
-				E230B7B027ACF9510069F321 /* TabBarScrollDirection.swift */,
 				E2C792C427B0F052008CB915 /* MenuType.swift */,
 			);
 			path = Enum;
@@ -427,7 +424,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E230B7B127ACF9510069F321 /* TabBarScrollDirection.swift in Sources */,
 				E230B7AB27AC7AB40069F321 /* JTabBar.swift in Sources */,
 				E230B7BF27AE21EB0069F321 /* JTabConfig.swift in Sources */,
 				E230B7B927ADF74B0069F321 /* JTabBarProtocol.swift in Sources */,
