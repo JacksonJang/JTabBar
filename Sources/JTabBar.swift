@@ -233,7 +233,7 @@ extension JTabBar: UIScrollViewDelegate {
             
             let check:Bool = scrollView.contentOffset.x >= 0 && scrollView.contentOffset.x <  scrollView.frame.width * CGFloat(numberOfItems)
             let check2:Bool = menuView.layoutAttributesForItem(at: IndexPath(row: currentIndex, section: 0))!.frame.origin.x < scrollableWidth
-
+            
             if check && check2 {
                 var x = max(scrollView.contentOffset.x / scrollView.frame.width - 1, 0)
                 
@@ -244,7 +244,12 @@ extension JTabBar: UIScrollViewDelegate {
                 
                 UIView.animate(withDuration: 0.1, animations: {
                     self.menuView.setContentOffset(menuPoint, animated: false)
-                    self.borderMenuBottomView.frame.origin = point
+                }, completion: nil)
+            }
+            
+            if !check2 {
+                UIView.animate(withDuration: 0.1, animations: {
+                    self.menuView.setContentOffset(CGPoint(x: (CGFloat(numberOfItems) * 50 - scrollView.frame.width), y: 0), animated: false)
                 }, completion: nil)
             }
             
