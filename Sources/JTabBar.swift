@@ -156,7 +156,7 @@ extension JTabBar {
         let scrollViewOffset = CGPoint(x: Int(self.scrollView.frame.width) * index, y: 0)
         
         scrollView.setContentOffset(scrollViewOffset, animated: true)
-        menuView.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: true)
+//        menuView.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: true)
         
         menuView.reloadData()
     }
@@ -219,37 +219,36 @@ extension JTabBar: UICollectionViewDelegate, UICollectionViewDataSource, UIColle
 
 extension JTabBar: UIScrollViewDelegate {
     
-    public func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
-        if self.scrollView == scrollView {
-            let currentIndex = Int(round(scrollView.contentOffset.x / deviceWidth))
-
-            self.currentIndex = currentIndex
-            
-            //It's status that changed index
-            if CGFloat(currentIndex) * deviceWidth == scrollView.contentOffset.x {
-//                moveToTab(index: currentIndex)
-            }
-        }
-    }
-    
     public func scrollViewDidScroll(_ scrollView: UIScrollView) {
         if self.scrollView == scrollView {
             let x = scrollView.contentOffset.x / UIScreen.main.bounds.width * 50
             let point = CGPoint(x: x, y: config.menuHeight - config.menuBottomLineHeight)
+            let numberOfItems = menuView.dataSource!.collectionView(menuView.self, numberOfItemsInSection: 0)
+            let currentIndex = Int(round(scrollView.contentOffset.x / scrollView.frame.width))
+            let scrollableWidth = 2 * scrollView.frame.width - (CGFloat(numberOfItems) * 50.0)
             
+            //Change Bottom Line Location
             UIView.animate(withDuration: 0.1, animations: {
                 self.borderMenuBottomView.frame.origin = point
             }, completion: nil)
             
-            let numberOfItems = menuView.dataSource!.collectionView(menuView.self, numberOfItemsInSection: 0)
-            print("numberOfItems : ", numberOfItems)
-            
-            if scrollView.contentOffset.x > deviceWidth {
-                let temp = scrollView.contentOffset.x / deviceWidth
-                let menuPoint = CGPoint(x: (temp - 1) * 50 , y: 0)
-                print("scrollView.contentOffset.x : ", scrollView.contentOffset.x)
-                self.menuView.setContentOffset(menuPoint, animated: false)
+            let check:Bool = scrollView.contentOffset.x >= 0 && scrollView.contentOffset.x <  scrollView.frame.width * CGFloat(numberOfItems)
+            let check2:Bool = menuView.layoutAttributesForItem(at: IndexPath(row: currentIndex, section: 0))!.frame.origin.x + 50 < scrollableWidth
+
+            if check && check2 {
+                var x = max(scrollView.contentOffset.x / scrollView.frame.width - 1, 0)
+                
+                if currentIndex == numberOfItems - 1 {
+                    x = x + scrollView.frame.width
+                }
+                let menuPoint = CGPoint(x: x * 50 , y: 0)
+                
+                UIView.animate(withDuration: 0.1, animations: {
+                    self.menuView.setContentOffset(menuPoint, animated: false)
+                    self.borderMenuBottomView.frame.origin = point
+                }, completion: nil)
             }
+            
         }
     }
 }
