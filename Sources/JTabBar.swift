@@ -80,8 +80,6 @@ open class JTabBar: UIViewController {
         switch config.menuType {
         case .button:
             setupButtonTab()
-//        case .variable:
-//            setupVariableTab()
         }
     }
     
@@ -152,7 +150,6 @@ extension JTabBar {
 //MARK: - Tab Function
 extension JTabBar {
     private func moveToTab(index:Int) {
-        let indexPath = IndexPath(row: index, section: 0)
         let scrollViewOffset = CGPoint(x: Int(self.scrollView.frame.width) * index, y: 0)
         
         scrollView.setContentOffset(scrollViewOffset, animated: true)
