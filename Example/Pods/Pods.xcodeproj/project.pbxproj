@@ -14,10 +14,10 @@
 		667719A09D02259AE06BB518F6BCD4F2 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 73010CC983E3809BECEE5348DA1BB8C6 /* Foundation.framework */; };
 		8FD2ACABEDF73C8CD406918CF5E500CE /* JTabBar-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 91DBA15105B8C7ADB776DA5131569CF7 /* JTabBar-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		9992336D8B3044C97A6D0B0095E20DBC /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 73010CC983E3809BECEE5348DA1BB8C6 /* Foundation.framework */; };
-		E230B7AB27AC7AB40069F321 /* JTabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = E230B7AA27AC7AB40069F321 /* JTabBar.swift */; };
 		E230B7B627AD02EE0069F321 /* JTabMenuCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E230B7B527AD02EE0069F321 /* JTabMenuCell.swift */; };
 		E230B7B927ADF74B0069F321 /* JTabBarProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = E230B7B827ADF74B0069F321 /* JTabBarProtocol.swift */; };
 		E230B7BF27AE21EB0069F321 /* JTabConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = E230B7BE27AE21EB0069F321 /* JTabConfig.swift */; };
+		E232716027B536AD005D0C46 /* JTabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = E230B7AA27AC7AB40069F321 /* JTabBar.swift */; };
 		E2C792C527B0F052008CB915 /* MenuType.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2C792C427B0F052008CB915 /* MenuType.swift */; };
 		ED3CA4BCDBD7E6E94D48FD9296D784C1 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 73010CC983E3809BECEE5348DA1BB8C6 /* Foundation.framework */; };
 		F40151C94B6C561C8FE3B855815EB07E /* Pods-JTabBar_Tests-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 1E8F66FA8A5D4F884E79F7748377A102 /* Pods-JTabBar_Tests-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -424,11 +424,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E230B7AB27AC7AB40069F321 /* JTabBar.swift in Sources */,
 				E230B7BF27AE21EB0069F321 /* JTabConfig.swift in Sources */,
 				E230B7B927ADF74B0069F321 /* JTabBarProtocol.swift in Sources */,
 				E230B7B627AD02EE0069F321 /* JTabMenuCell.swift in Sources */,
 				E2C792C527B0F052008CB915 /* MenuType.swift in Sources */,
+				E232716027B536AD005D0C46 /* JTabBar.swift in Sources */,
 				009D38548F7006B5840E988D1642F829 /* JTabBar-dummy.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
