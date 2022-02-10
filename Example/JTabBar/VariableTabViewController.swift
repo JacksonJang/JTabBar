@@ -39,7 +39,6 @@ class VariableTabViewController: UIViewController {
         
         let config = JTabConfig(menus: menus)
         
-        config.menuType = .variable
         config.menuHeight = 50.0
         config.menuBottomLineHeight = 3.0
         config.menuBottomLineColor = .black

@@ -80,8 +80,8 @@ open class JTabBar: UIViewController {
         switch config.menuType {
         case .button:
             setupButtonTab()
-        case .variable:
-            setupVariableTab()
+//        case .variable:
+//            setupVariableTab()
         }
     }
     
@@ -92,9 +92,9 @@ open class JTabBar: UIViewController {
     public func add(parentController: UIViewController) {
         self.parentController = parentController
         
-        parentController.addChildViewController(self)
+        parentController.addChild(self)
         parentController.view.addSubview(self.view)
-        didMove(toParentViewController: parentController)
+        didMove(toParent: parentController)
     }
 }
 
@@ -164,9 +164,9 @@ extension JTabBar {
         let vc = viewControllers[index]
         vc.view.tag = index
         
-        vc.willMove(toParentViewController: self)
+        vc.willMove(toParent: self)
         
-        self.addChildViewController(vc)
+        self.addChild(vc)
         
         let x = deviceWidth * CGFloat(index)
         let y = 0.0
@@ -174,7 +174,7 @@ extension JTabBar {
         vc.view.frame = CGRect(x: x, y: y, width: self.scrollView.frame.width, height: self.scrollView.frame.height)
         
         self.scrollView.addSubview(vc.view)
-        vc.didMove(toParentViewController: self)
+        vc.didMove(toParent: self)
     }
     
     private func removeContentView(index:Int) {
