@@ -16,6 +16,7 @@ public class JTabConfig {
     open var menuLeftMargin:CGFloat = 0.0
     open var menuRightMargin:CGFloat = 0.0
     open var menuBottomMargin:CGFloat = 0.0
+    
     open var menuHeight:CGFloat = 50.0
     
     //Menu Bottom Line
