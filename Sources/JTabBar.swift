@@ -232,11 +232,7 @@ extension JTabBar: UIScrollViewDelegate {
             let check2:Bool = menuView.layoutAttributesForItem(at: IndexPath(row: currentIndex, section: 0))!.frame.origin.x < scrollableWidth
             
             if check && check2 {
-                var x:CGFloat = max(scrollView.contentOffset.x / scrollView.frame.width - 1, 0)
-                
-//                if currentIndex == numberOfItems - 1 {
-//                    x = x + scrollView.frame.width
-//                }
+                let x:CGFloat = max(scrollView.contentOffset.x / scrollView.frame.width - 1, 0)
                 
                 let menuPoint = CGPoint(x: x * 50 , y: 0)
                 

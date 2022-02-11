@@ -13,6 +13,7 @@ class ButtonTabViewController: UIViewController {
 
     var viewControllers:[UIViewController] = []
     var tab:JTabBar!
+    var topView:UIView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -61,18 +62,34 @@ class ButtonTabViewController: UIViewController {
     }
     
     func createExampleController() {
-
+        topView = UIView()
+        topView.translatesAutoresizingMaskIntoConstraints = false
+        
+        //TODO: Need to add something function view
+        
+        self.view.addSubview(topView)
     }
     
     func updateConstraints() {
         if #available(iOS 11.0, *) {
-            tab.view.topAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.topAnchor, constant: 100).isActive = true
+            topView.topAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.topAnchor, constant: 0).isActive = true
         } else {
-            tab.view.topAnchor.constraint(equalTo: self.topLayoutGuide.topAnchor, constant: 100).isActive = true
+            topView.topAnchor.constraint(equalTo: self.topLayoutGuide.topAnchor, constant: 0).isActive = true
         }
-        tab.view.leadingAnchor.constraint(equalTo: self.view.leadingAnchor).isActive = true
-        tab.view.trailingAnchor.constraint(equalTo: self.view.trailingAnchor).isActive = true
-        tab.view.bottomAnchor.constraint(equalTo: self.view.bottomAnchor).isActive = true
+        topView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor).isActive = true
+        topView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor).isActive = true
+        topView.heightAnchor.constraint(equalToConstant: 100).isActive = true
+        
+        //JTabBar
+        tab.view.topAnchor.constraint(equalTo: self.topView.bottomAnchor).isActive = true
+        tab.view.leadingAnchor.constraint(equalTo: self.topView.leadingAnchor).isActive = true
+        tab.view.trailingAnchor.constraint(equalTo: self.topView.trailingAnchor).isActive = true
+        
+        if #available(iOS 11.0, *) {
+            tab.view.bottomAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.bottomAnchor).isActive = true
+        } else {
+            tab.view.bottomAnchor.constraint(equalTo: self.bottomLayoutGuide.bottomAnchor).isActive = true
+        }
     }
     
     func getRandomColor() -> UIColor{
