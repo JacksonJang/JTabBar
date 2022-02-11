@@ -14,7 +14,7 @@ class ButtonTabViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        let backgroundColors = [getRandomColor(), getRandomColor(), getRandomColor(), getRandomColor(), getRandomColor(), getRandomColor(), getRandomColor(), getRandomColor(), getRandomColor(), getRandomColor(), getRandomColor()]
+        let backgroundColors = [getRandomColor(), getRandomColor()]
         
         let viewControllers = backgroundColors.enumerated().map { (index, elements) -> UIViewController in
             let controller = UIViewController()
