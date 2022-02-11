@@ -11,12 +11,15 @@ import JTabBar
 
 class ButtonTabViewController: UIViewController {
 
+    var viewControllers:[UIViewController] = []
+    var tab:JTabBar!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         let backgroundColors = [getRandomColor(), getRandomColor(), getRandomColor(), getRandomColor(), getRandomColor(), getRandomColor(), getRandomColor(), getRandomColor(), getRandomColor(), getRandomColor(), getRandomColor()]
         
-        let viewControllers = backgroundColors.enumerated().map { (index, elements) -> UIViewController in
+        self.viewControllers = backgroundColors.enumerated().map { (index, elements) -> UIViewController in
             let controller = UIViewController()
             controller.view.backgroundColor = elements
             return controller
@@ -25,9 +28,19 @@ class ButtonTabViewController: UIViewController {
         let config = createJTabConfig(viewControllers: viewControllers)
         
         //Adding ViewControllers
-        JTabBar(viewControllers: viewControllers,
-                config: config
-        ).add(parentController: self)
+        createJTabBar(config:config)
+        createExampleController()
+        updateConstraints()
+    }
+    
+    func createJTabBar(config:JTabConfig) {
+        //Adding ViewControllers
+        tab = JTabBar(
+            viewControllers: viewControllers,
+            config: config
+        )
+        tab.view.translatesAutoresizingMaskIntoConstraints = false
+        tab.add(parentController: self)
     }
     
     func createJTabConfig(viewControllers:[UIViewController]) -> JTabConfig {
@@ -45,6 +58,21 @@ class ButtonTabViewController: UIViewController {
         config.menuBottomLineColor = .black
         
         return config
+    }
+    
+    func createExampleController() {
+
+    }
+    
+    func updateConstraints() {
+        if #available(iOS 11.0, *) {
+            tab.view.topAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.topAnchor, constant: 100).isActive = true
+        } else {
+            tab.view.topAnchor.constraint(equalTo: self.topLayoutGuide.topAnchor, constant: 100).isActive = true
+        }
+        tab.view.leadingAnchor.constraint(equalTo: self.view.leadingAnchor).isActive = true
+        tab.view.trailingAnchor.constraint(equalTo: self.view.trailingAnchor).isActive = true
+        tab.view.bottomAnchor.constraint(equalTo: self.view.bottomAnchor).isActive = true
     }
     
     func getRandomColor() -> UIColor{
