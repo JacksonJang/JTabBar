@@ -223,42 +223,82 @@ extension JTabBar: UIScrollViewDelegate {
     
     public func scrollViewDidScroll(_ scrollView: UIScrollView) {
         if self.scrollView == scrollView {
-            //count and index
-            let numberOfItems = menuView.dataSource!.collectionView(menuView.self, numberOfItemsInSection: 0)
+            //Limiting the scrollable area
+            let maxWidth:CGFloat = self.view.frame.width * CGFloat(viewControllers.count)
+            let minWidth:CGFloat = 0
+            if scrollView.contentOffset.y > maxWidth {
+                scrollView.setContentOffset(CGPoint(x: maxWidth, y: 0), animated: false)
+                return
+            }
+            if scrollView.contentOffset.y < minWidth {
+                scrollView.setContentOffset(CGPoint(x: minWidth, y: 0), animated: false)
+                return
+            }
+            
+            //index
             let currentIndex = Int(round(scrollView.contentOffset.x / scrollView.frame.width))
             
             //Selected Size And Origin
-            let selectedWidth = getTextSize(text: menus[currentIndex]).width
-            let selectedOrigin = menuView.layoutAttributesForItem(at: IndexPath(row: currentIndex, section: 0))!.frame.origin
-            
-            let x = selectedOrigin.x
-            let point = CGPoint(x: x, y: config.menuHeight - config.menuBottomLineHeight)
-            
-            //check2에서 사용
-            let scrollableWidth = scrollView.frame.width - (CGFloat(numberOfItems) * selectedWidth - scrollView.frame.width)
+            let menuSelectedWidth = getTextSize(text: menus[currentIndex]).width
+            let menuSelectedOrigin = menuView.layoutAttributesForItem(at: IndexPath(row: currentIndex, section: 0))!.frame.origin
             
             //Change Bottom Line Location
+            let borderMenuBottomViewX = menuSelectedOrigin.x
+            let borderMenuBottomViewPoint = CGPoint(x: borderMenuBottomViewX, y: config.menuHeight - config.menuBottomLineHeight)
             UIView.animate(withDuration: 0.1, animations: {
-                self.borderMenuBottomView.frame.origin = point
+                self.borderMenuBottomView.frame.origin = borderMenuBottomViewPoint
                 
             }, completion: nil)
             UIView.animate(withDuration: 0.1, animations: {
-                self.borderMenuBottomView.frame.size = CGSize(width: selectedWidth, height: self.borderMenuBottomView.frame.size.height)
+                self.borderMenuBottomView.frame.size = CGSize(width: menuSelectedWidth, height: self.borderMenuBottomView.frame.size.height)
             }, completion: nil)
             
+            //Calculating menu max width
+            var menuMaxWidth:CGFloat = 0.0
+            for item in menus {
+                if menuMaxWidth >= deviceWidth / 3 {
+                    break
+                }
+                menuMaxWidth += getTextSize(text: item).width
+                
+                if menuMaxWidth > deviceWidth / 3 {
+                    menuMaxWidth = deviceWidth / 3
+                }
+            }
             
-            let check:Bool = scrollView.contentOffset.x >= 0 && scrollView.contentOffset.x <  scrollView.frame.width * CGFloat(numberOfItems)
-            let check2:Bool = menuView.layoutAttributesForItem(at: IndexPath(row: currentIndex, section: 0))!.frame.origin.x < scrollableWidth
+            //calculated value that is from first to last width value
+            var menufirstToSelectedWidth:CGFloat = 0.0
+            var y = 0
+            while y < currentIndex + 1 {
+                menufirstToSelectedWidth += getTextSize(text: menus[y]).width
+                y += 1
+            }
             
-//            if check {
-//                let menuPoint = CGPoint(x: selectedOrigin.x , y: 0)
-//
-//                UIView.animate(withDuration: 0.1, animations: {
-//                    self.menuView.setContentOffset(menuPoint, animated: false)
-//                }, completion: nil)
-//            }
-
-            
+            //Moving event MenuView
+            var menuSelectedX = menuSelectedOrigin.x
+            if menuSelectedX > menuMaxWidth {
+                menuSelectedX = menuSelectedOrigin.x / 3
+                if menuView.contentSize.width - menufirstToSelectedWidth < menuMaxWidth {
+                    //Move to last
+                    let x = menuView.contentSize.width - deviceWidth
+                    let menuPoint = CGPoint(x: x , y: 0)
+                    UIView.animate(withDuration: 0.1, animations: {
+                        self.menuView.setContentOffset(menuPoint, animated: false)
+                    }, completion: nil)
+                } else {
+                    //Move to middle
+                    let menuPoint = CGPoint(x: menuSelectedX , y: 0)
+                    UIView.animate(withDuration: 0.1, animations: {
+                        self.menuView.setContentOffset(menuPoint, animated: false)
+                    }, completion: nil)
+                }
+            } else {
+                //Move to first
+                UIView.animate(withDuration: 0.1, animations: {
+                    let menuPoint = CGPoint(x: 0 , y: 0)
+                    self.menuView.setContentOffset(menuPoint, animated: false)
+                }, completion: nil)
+            }
         }
     }
 }
