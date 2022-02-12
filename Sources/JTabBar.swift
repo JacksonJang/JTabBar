@@ -35,7 +35,7 @@ open class JTabBar: UIViewController {
     private lazy var borderMenuBottomView:UIView = {
         let view = UIView()
         
-        view.backgroundColor = .black
+        view.backgroundColor = config.menuBottomLineColor
         view.frame = CGRect(x: 0,
                             y: config.menuHeight - config.menuBottomLineHeight,
                             width: 50,
@@ -153,8 +153,7 @@ extension JTabBar {
         let scrollViewOffset = CGPoint(x: Int(self.scrollView.frame.width) * index, y: 0)
         
         scrollView.setContentOffset(scrollViewOffset, animated: true)
-        
-        menuView.reloadData()
+
     }
     
     private func addContentView(index:Int) {
@@ -209,7 +208,14 @@ extension JTabBar: UICollectionViewDelegate, UICollectionViewDataSource, UIColle
     }
     
     public func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: 50, height: config.menuHeight)
+        let size = getTextSize(text: menus[indexPath.row])
+        
+        //changed border of first index
+        if indexPath.row == 0 {
+            self.borderMenuBottomView.frame.size = CGSize(width: size.width, height: self.borderMenuBottomView.frame.size.height)
+        }
+        
+        return CGSize(width: size.width, height: config.menuHeight)
     }
 }
 
@@ -217,36 +223,53 @@ extension JTabBar: UIScrollViewDelegate {
     
     public func scrollViewDidScroll(_ scrollView: UIScrollView) {
         if self.scrollView == scrollView {
-            let x = scrollView.contentOffset.x / UIScreen.main.bounds.width * 50
-            let point = CGPoint(x: x, y: config.menuHeight - config.menuBottomLineHeight)
+            //count and index
             let numberOfItems = menuView.dataSource!.collectionView(menuView.self, numberOfItemsInSection: 0)
             let currentIndex = Int(round(scrollView.contentOffset.x / scrollView.frame.width))
-            let scrollableWidth = scrollView.frame.width - (CGFloat(numberOfItems) * 50 - scrollView.frame.width)
+            
+            //Selected Size And Origin
+            let selectedWidth = getTextSize(text: menus[currentIndex]).width
+            let selectedOrigin = menuView.layoutAttributesForItem(at: IndexPath(row: currentIndex, section: 0))!.frame.origin
+            
+            let x = selectedOrigin.x
+            let point = CGPoint(x: x, y: config.menuHeight - config.menuBottomLineHeight)
+            
+            //check2에서 사용
+            let scrollableWidth = scrollView.frame.width - (CGFloat(numberOfItems) * selectedWidth - scrollView.frame.width)
             
             //Change Bottom Line Location
             UIView.animate(withDuration: 0.1, animations: {
                 self.borderMenuBottomView.frame.origin = point
+                
             }, completion: nil)
+            UIView.animate(withDuration: 0.1, animations: {
+                self.borderMenuBottomView.frame.size = CGSize(width: selectedWidth, height: self.borderMenuBottomView.frame.size.height)
+            }, completion: nil)
+            
             
             let check:Bool = scrollView.contentOffset.x >= 0 && scrollView.contentOffset.x <  scrollView.frame.width * CGFloat(numberOfItems)
             let check2:Bool = menuView.layoutAttributesForItem(at: IndexPath(row: currentIndex, section: 0))!.frame.origin.x < scrollableWidth
             
-            if check && check2 {
-                let x:CGFloat = max(scrollView.contentOffset.x / scrollView.frame.width - 1, 0)
-                
-                let menuPoint = CGPoint(x: x * 50 , y: 0)
-                
-                UIView.animate(withDuration: 0.1, animations: {
-                    self.menuView.setContentOffset(menuPoint, animated: false)
-                }, completion: nil)
-            }
-            
-            if !check2 {
-                UIView.animate(withDuration: 0.1, animations: {
-                    self.menuView.setContentOffset(CGPoint(x: (CGFloat(numberOfItems) * 50 - scrollView.frame.width), y: 0), animated: false)
-                }, completion: nil)
-            }
+//            if check {
+//                let menuPoint = CGPoint(x: selectedOrigin.x , y: 0)
+//
+//                UIView.animate(withDuration: 0.1, animations: {
+//                    self.menuView.setContentOffset(menuPoint, animated: false)
+//                }, completion: nil)
+//            }
+
             
         }
+    }
+}
+
+//MARK: Utils
+extension JTabBar {
+    private func getTextSize(text:String) -> CGSize {
+        let label = UILabel()
+        label.text = text
+        label.frame.size = CGSize(width: CGFloat.greatestFiniteMagnitude, height: CGFloat.greatestFiniteMagnitude)
+        label.sizeToFit()
+        return label.frame.size
     }
 }

@@ -19,7 +19,7 @@ class ButtonTabViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        let backgroundColors = [getRandomColor(), getRandomColor(), getRandomColor(), getRandomColor(), getRandomColor(), getRandomColor(), getRandomColor(), getRandomColor(), getRandomColor(), getRandomColor(), getRandomColor()]
+        let backgroundColors = [getRandomColor(), getRandomColor(), getRandomColor(), getRandomColor(), getRandomColor(), getRandomColor()]
         
         self.viewControllers = backgroundColors.enumerated().map { (index, elements) -> UIViewController in
             let controller = UIViewController()
@@ -48,9 +48,12 @@ class ButtonTabViewController: UIViewController {
     func createJTabConfig(viewControllers:[UIViewController]) -> JTabConfig {
         var menus:[String] = []
         
-        for index in 0..<viewControllers.count {
-            menus.append("Tab\(index)")
-        }
+        menus.append("Tab1111111111111")
+        menus.append("Tab2")
+        menus.append("Tab33333")
+        menus.append("Tab444444444444")
+        menus.append("Tab55555")
+        menus.append("Tab6")
         
         let config = JTabConfig(menus: menus)
         
