@@ -14,6 +14,7 @@ class ButtonTabViewController: UIViewController {
     var viewControllers:[UIViewController] = []
     var tab:JTabBar!
     var topView:UIView!
+    var somethingLabel:UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -66,7 +67,12 @@ class ButtonTabViewController: UIViewController {
         topView.translatesAutoresizingMaskIntoConstraints = false
         
         //TODO: Need to add something function view
+        somethingLabel = UILabel()
+        somethingLabel.translatesAutoresizingMaskIntoConstraints = false
+        somethingLabel.text = "Need to add something function view"
+        somethingLabel.textColor = UIColor.black
         
+        topView.addSubview(somethingLabel)
         self.view.addSubview(topView)
     }
     
@@ -79,6 +85,9 @@ class ButtonTabViewController: UIViewController {
         topView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor).isActive = true
         topView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor).isActive = true
         topView.heightAnchor.constraint(equalToConstant: 100).isActive = true
+        
+        somethingLabel.centerXAnchor.constraint(equalTo: topView.centerXAnchor).isActive = true
+        somethingLabel.centerYAnchor.constraint(equalTo: topView.centerYAnchor).isActive = true
         
         //JTabBar
         tab.view.topAnchor.constraint(equalTo: self.topView.bottomAnchor).isActive = true
