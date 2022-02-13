@@ -13,6 +13,7 @@ open class JTabBar: UIViewController {
         let layout = UICollectionViewFlowLayout()
         
         layout.minimumLineSpacing = 0
+        layout.minimumInteritemSpacing = 0
         layout.scrollDirection = .horizontal
         
         return layout
@@ -63,6 +64,8 @@ open class JTabBar: UIViewController {
     private var parentController:UIViewController?
     private var config:JTabConfig!
     
+    private var menuViewContentWidthList:[CGFloat] = []
+    private var menuViewContentWidth:CGFloat = 0.0
     
     private var previousIndex:Int = 0
     private var currentIndex:Int = 0
@@ -132,6 +135,12 @@ extension JTabBar {
         menuView.reloadData()
         
         setupContentView()
+        
+        //Calculate MenuView Content Width
+        for item in menus {
+            self.menuViewContentWidth += getTextSize(text: item).width
+            menuViewContentWidthList.append(getTextSize(text: item).width)
+        }
     }
     
     private func setupContentView(){
@@ -206,7 +215,19 @@ extension JTabBar: UICollectionViewDelegate, UICollectionViewDataSource, UIColle
     }
     
     public func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let size = getTextSize(text: menus[indexPath.row])
+        var size = getTextSize(text: menus[indexPath.row])
+        
+        if self.scrollView.frame.width > self.menuViewContentWidth {
+            self.menuView.isScrollEnabled = false
+            let maxWidth = menuViewContentWidthList.sorted().reversed().first!
+
+            var calWidth = (self.menuView.frame.width - maxWidth - self.menuViewContentWidth) / CGFloat(self.menuViewContentWidthList.count - 1)
+            if size.width == maxWidth {
+                calWidth = maxWidth
+            }
+            
+            size = CGSize(width: size.width + calWidth, height: self.borderMenuBottomView.frame.size.height)
+        }
         
         //changed border of first index
         if indexPath.row == 0 {
@@ -243,58 +264,77 @@ extension JTabBar: UIScrollViewDelegate {
             //Move to the current index Bottom Line Location
             let borderMenuBottomViewX = menuSelectedOrigin.x
             let borderMenuBottomViewPoint = CGPoint(x: borderMenuBottomViewX, y: config.menuHeight - config.menuBottomLineHeight)
-            UIView.animate(withDuration: 0.1, animations: {
-                self.borderMenuBottomView.frame.origin = borderMenuBottomViewPoint
-                self.borderMenuBottomView.frame.size = CGSize(width: menuSelectedWidth, height: self.borderMenuBottomView.frame.size.height)
-                
-            }, completion: nil)
-            
-            //Calculating menu max width
-            var menuMaxWidth:CGFloat = 0.0
-            for item in menus {
-                if menuMaxWidth >= self.scrollView.frame.width / 3 {
-                    break
-                }
-                menuMaxWidth += getTextSize(text: item).width
-                
-                if menuMaxWidth > self.scrollView.frame.width / 3 {
-                    menuMaxWidth = self.scrollView.frame.width / 3
-                }
-            }
-            
-            //calculated value that is from first to last width value
-            var menufirstToSelectedWidth:CGFloat = 0.0
-            var y = 0
-            while y < currentIndex + 1 {
-                menufirstToSelectedWidth += getTextSize(text: menus[y]).width
-                y += 1
-            }
-            
-            //Moving event MenuView
-            var menuSelectedX = menuSelectedOrigin.x
-            if menuSelectedX > menuMaxWidth {
-                menuSelectedX = menuSelectedOrigin.x / 3
-                if menuView.contentSize.width - menufirstToSelectedWidth < menuMaxWidth {
-                    //Move to last
-                    let x = menuView.contentSize.width - self.scrollView.frame.width
-                    let menuPoint = CGPoint(x: x , y: 0)
-                    UIView.animate(withDuration: 0.1, animations: {
-                        self.menuView.setContentOffset(menuPoint, animated: false)
-                    }, completion: nil)
-                } else {
-                    //Move to middle
-                    let menuPoint = CGPoint(x: menuSelectedX , y: 0)
-                    UIView.animate(withDuration: 0.1, animations: {
-                        self.menuView.setContentOffset(menuPoint, animated: false)
-                    }, completion: nil)
-                }
-            } else {
-                //Move to first
+            if self.menuView.frame.width > self.menuViewContentWidth {
+                //EntireView > ContentView
                 UIView.animate(withDuration: 0.1, animations: {
-                    let menuPoint = CGPoint(x: 0 , y: 0)
-                    self.menuView.setContentOffset(menuPoint, animated: false)
+                    self.borderMenuBottomView.frame.origin = borderMenuBottomViewPoint
+                    //Calculating border width
+                    var size = self.getTextSize(text: self.menus[currentIndex])
+                    let maxWidth = self.menuViewContentWidthList.sorted().reversed().first!
+                    var calWidth = (self.menuView.frame.width - maxWidth - self.menuViewContentWidth) / CGFloat(self.menuViewContentWidthList.count - 1)
+                    if size.width == maxWidth {
+                        calWidth = maxWidth
+                    }
+                    
+                    size = CGSize(width: size.width + calWidth, height: self.borderMenuBottomView.frame.size.height)
+                    
+                    self.borderMenuBottomView.frame.size = CGSize(width: size.width, height: self.borderMenuBottomView.frame.size.height)
                 }, completion: nil)
+            } else {
+                //EntireView < ContentView
+                UIView.animate(withDuration: 0.1, animations: {
+                    self.borderMenuBottomView.frame.origin = borderMenuBottomViewPoint
+                    self.borderMenuBottomView.frame.size = CGSize(width: menuSelectedWidth, height: self.borderMenuBottomView.frame.size.height)
+                }, completion: nil)
+                
+                //Calculating menu max width
+                var menuMaxWidth:CGFloat = 0.0
+                for item in menus {
+                    if menuMaxWidth >= self.scrollView.frame.width / 3 {
+                        break
+                    }
+                    menuMaxWidth += getTextSize(text: item).width
+                    
+                    if menuMaxWidth > self.scrollView.frame.width / 3 {
+                        menuMaxWidth = self.scrollView.frame.width / 3
+                    }
+                }
+                
+                //calculated value that is from first to last width value
+                var menufirstToSelectedWidth:CGFloat = 0.0
+                var y = 0
+                while y < currentIndex + 1 {
+                    menufirstToSelectedWidth += getTextSize(text: menus[y]).width
+                    y += 1
+                }
+                
+                //Moving event MenuView
+                var menuSelectedX = menuSelectedOrigin.x
+                if menuSelectedX > menuMaxWidth {
+                    menuSelectedX = menuSelectedOrigin.x / 3
+                    if menuView.contentSize.width - menufirstToSelectedWidth < menuMaxWidth {
+                        //Move to last
+                        let x = menuView.contentSize.width - self.scrollView.frame.width
+                        let menuPoint = CGPoint(x: x , y: 0)
+                        UIView.animate(withDuration: 0.1, animations: {
+                            self.menuView.setContentOffset(menuPoint, animated: false)
+                        }, completion: nil)
+                    } else {
+                        //Move to middle
+                        let menuPoint = CGPoint(x: menuSelectedX , y: 0)
+                        UIView.animate(withDuration: 0.1, animations: {
+                            self.menuView.setContentOffset(menuPoint, animated: false)
+                        }, completion: nil)
+                    }
+                } else {
+                    //Move to first
+                    UIView.animate(withDuration: 0.1, animations: {
+                        let menuPoint = CGPoint(x: 0 , y: 0)
+                        self.menuView.setContentOffset(menuPoint, animated: false)
+                    }, completion: nil)
+                }
             }
+            
         }
     }
 }
