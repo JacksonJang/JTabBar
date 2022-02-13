@@ -242,15 +242,13 @@ extension JTabBar: UIScrollViewDelegate {
             let menuSelectedWidth = getTextSize(text: menus[currentIndex]).width
             let menuSelectedOrigin = menuView.layoutAttributesForItem(at: IndexPath(row: currentIndex, section: 0))!.frame.origin
             
-            //Change Bottom Line Location
+            //Move to the current index Bottom Line Location
             let borderMenuBottomViewX = menuSelectedOrigin.x
             let borderMenuBottomViewPoint = CGPoint(x: borderMenuBottomViewX, y: config.menuHeight - config.menuBottomLineHeight)
             UIView.animate(withDuration: 0.1, animations: {
                 self.borderMenuBottomView.frame.origin = borderMenuBottomViewPoint
-                
-            }, completion: nil)
-            UIView.animate(withDuration: 0.1, animations: {
                 self.borderMenuBottomView.frame.size = CGSize(width: menuSelectedWidth, height: self.borderMenuBottomView.frame.size.height)
+                
             }, completion: nil)
             
             //Calculating menu max width

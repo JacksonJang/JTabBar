@@ -69,10 +69,9 @@ class ButtonTabViewController: UIViewController {
         topView = UIView()
         topView.translatesAutoresizingMaskIntoConstraints = false
         
-        //TODO: Need to add something function view
         somethingLabel = UILabel()
         somethingLabel.translatesAutoresizingMaskIntoConstraints = false
-        somethingLabel.text = "Need to add something function view"
+        somethingLabel.text = "You can add something function view"
         somethingLabel.textColor = UIColor.black
         
         topView.addSubview(somethingLabel)
