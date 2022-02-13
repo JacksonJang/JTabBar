@@ -63,8 +63,6 @@ open class JTabBar: UIViewController {
     private var parentController:UIViewController?
     private var config:JTabConfig!
     
-    private let deviceWidth = UIScreen.main.bounds.width
-    private let deviceHeight = UIScreen.main.bounds.height
     
     private var previousIndex:Int = 0
     private var currentIndex:Int = 0
@@ -164,10 +162,10 @@ extension JTabBar {
         
         self.addChild(vc)
         
-        let x = deviceWidth * CGFloat(index)
+        let x = vc.view.frame.width * CGFloat(index)
         let y = 0.0
         
-        vc.view.frame = CGRect(x: x, y: y, width: self.scrollView.frame.width, height: self.scrollView.frame.height)
+        vc.view.frame = CGRect(x: x, y: y, width: vc.view.frame.width, height: self.scrollView.frame.height)
         
         self.scrollView.addSubview(vc.view)
         vc.didMove(toParent: self)
@@ -254,13 +252,13 @@ extension JTabBar: UIScrollViewDelegate {
             //Calculating menu max width
             var menuMaxWidth:CGFloat = 0.0
             for item in menus {
-                if menuMaxWidth >= deviceWidth / 3 {
+                if menuMaxWidth >= self.scrollView.frame.width / 3 {
                     break
                 }
                 menuMaxWidth += getTextSize(text: item).width
                 
-                if menuMaxWidth > deviceWidth / 3 {
-                    menuMaxWidth = deviceWidth / 3
+                if menuMaxWidth > self.scrollView.frame.width / 3 {
+                    menuMaxWidth = self.scrollView.frame.width / 3
                 }
             }
             
@@ -278,7 +276,7 @@ extension JTabBar: UIScrollViewDelegate {
                 menuSelectedX = menuSelectedOrigin.x / 3
                 if menuView.contentSize.width - menufirstToSelectedWidth < menuMaxWidth {
                     //Move to last
-                    let x = menuView.contentSize.width - deviceWidth
+                    let x = menuView.contentSize.width - self.scrollView.frame.width
                     let menuPoint = CGPoint(x: x , y: 0)
                     UIView.animate(withDuration: 0.1, animations: {
                         self.menuView.setContentOffset(menuPoint, animated: false)
