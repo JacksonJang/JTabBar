@@ -12,8 +12,7 @@ class MainViewController: UIViewController {
     @IBOutlet var tableView: UITableView!
     
     var data:[String] = [
-        "ButtonTabViewController",
-        "VariableTabViewController"
+        "ButtonTabViewController"
     ]
     
     override func viewDidLoad() {
@@ -44,8 +43,6 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource {
         switch index {
         case 0:
             pushViewController(type: ButtonTabViewController.self)
-        case 1:
-            pushViewController(type: VariableTabViewController.self)
         default:
             print("rest of index")
         }

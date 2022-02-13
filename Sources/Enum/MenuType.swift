@@ -9,5 +9,4 @@ import UIKit
 
 public enum MenuType {
     case button
-//    case variable
 }

@@ -78,10 +78,7 @@ open class JTabBar: UIViewController {
         self.menus = config.menus
         self.config = config
         
-        switch config.menuType {
-        case .button:
-            setupButtonTab()
-        }
+        setupButtonTab()
     }
     
     required public init?(coder: NSCoder) {
@@ -147,10 +144,6 @@ extension JTabBar {
         for (index, _) in viewControllers.enumerated() {
             addContentView(index: index)
         }
-    }
-    
-    private func setupVariableTab(){
-        
     }
 }
 
@@ -219,12 +212,7 @@ extension JTabBar: UICollectionViewDelegate, UICollectionViewDataSource, UIColle
         
         if self.scrollView.frame.width > self.menuViewContentWidth {
             self.menuView.isScrollEnabled = false
-            let maxWidth = menuViewContentWidthList.sorted().reversed().first!
-
-            var calWidth = (self.menuView.frame.width - maxWidth - self.menuViewContentWidth) / CGFloat(self.menuViewContentWidthList.count - 1)
-            if size.width == maxWidth {
-                calWidth = maxWidth
-            }
+            let calWidth = (self.menuView.frame.width - self.menuViewContentWidth) / CGFloat(self.menuViewContentWidthList.count)
             
             size = CGSize(width: size.width + calWidth, height: self.borderMenuBottomView.frame.size.height)
         }
@@ -270,11 +258,7 @@ extension JTabBar: UIScrollViewDelegate {
                     self.borderMenuBottomView.frame.origin = borderMenuBottomViewPoint
                     //Calculating border width
                     var size = self.getTextSize(text: self.menus[currentIndex])
-                    let maxWidth = self.menuViewContentWidthList.sorted().reversed().first!
-                    var calWidth = (self.menuView.frame.width - maxWidth - self.menuViewContentWidth) / CGFloat(self.menuViewContentWidthList.count - 1)
-                    if size.width == maxWidth {
-                        calWidth = maxWidth
-                    }
+                    let calWidth = (self.menuView.frame.width - self.menuViewContentWidth) / CGFloat(self.menuViewContentWidthList.count)
                     
                     size = CGSize(width: size.width + calWidth, height: self.borderMenuBottomView.frame.size.height)
                     
