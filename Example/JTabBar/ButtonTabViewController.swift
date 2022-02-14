@@ -25,7 +25,7 @@ class ButtonTabViewController: UIViewController {
             getRandomColor(),
             getRandomColor(),
             getRandomColor(),
-            getRandomColor()
+//            getRandomColor()
         ]
         
         self.viewControllers = backgroundColors.enumerated().map { (index, elements) -> UIViewController in
@@ -60,7 +60,7 @@ class ButtonTabViewController: UIViewController {
         menus.append("Tab3")
         menus.append("Tab444444444444")
         menus.append("Tab55555")
-        menus.append("Tab6")
+//        menus.append("Tab6")
         
         let config = JTabConfig(menus: menus)
         

@@ -300,10 +300,11 @@ extension JTabBar: UIScrollViewDelegate {
                 }
                 
                 //Moving event MenuView
-                var menuSelectedX = menuSelectedOrigin.x
+                let menuSelectedX = menuSelectedOrigin.x
                 if menuSelectedX > menuMaxWidth {
-                    menuSelectedX = menuSelectedOrigin.x / 3
-                    if menuView.contentSize.width - menufirstToSelectedWidth < menuMaxWidth {
+                    let calSelectedX = max(menuSelectedX - 20, 0)
+                    //menuView.contentSize.width :
+                    if menuView.contentSize.width - menufirstToSelectedWidth - getTextSize(text: menus[currentIndex-1]).width < menuMaxWidth {
                         //Move to last
                         let x = menuView.contentSize.width - self.scrollView.frame.width
                         let menuPoint = CGPoint(x: x , y: 0)
@@ -312,7 +313,7 @@ extension JTabBar: UIScrollViewDelegate {
                         }, completion: nil)
                     } else {
                         //Move to middle
-                        let menuPoint = CGPoint(x: menuSelectedX , y: 0)
+                        let menuPoint = CGPoint(x: calSelectedX , y: 0)
                         UIView.animate(withDuration: menuViewAnimationDuration, animations: {
                             self.menuView.setContentOffset(menuPoint, animated: false)
                         }, completion: nil)
@@ -337,6 +338,7 @@ extension JTabBar {
         label.text = text
         label.frame.size = CGSize(width: CGFloat.greatestFiniteMagnitude, height: CGFloat.greatestFiniteMagnitude)
         label.sizeToFit()
+        label.frame.size = CGSize(width: label.frame.size.width + config.menuLeftMargin + config.menuRightMargin, height: label.frame.size.height + config.menuTopMargin + config.menuBottomMargin)
         return label.frame.size
     }
 }
