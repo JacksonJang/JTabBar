@@ -302,8 +302,8 @@ extension JTabBar: UIScrollViewDelegate {
                 
                 //Moving event MenuView
                 let menuSelectedX = menuSelectedOrigin.x
-                if menuSelectedX >= menuMaxWidth {
-                    if menuView.contentSize.width - menuFirstToSelectedWidth - menuSelectedX < menuMaxWidth {
+                if menuSelectedX > menuMaxWidth {
+                    if menuView.contentSize.width - menuFirstToSelectedWidth < menuSelectedX {
                         //Move to last
                         let x = menuView.contentSize.width - self.scrollView.frame.width
                         let menuPoint = CGPoint(x: x , y: 0)
@@ -312,7 +312,7 @@ extension JTabBar: UIScrollViewDelegate {
                         }, completion: nil)
                     } else {
                         //Move to middle
-                        let menuPoint = CGPoint(x: menuView.frame.width - menuSelectedX -  menuMaxWidth, y: 0)
+                        let menuPoint = CGPoint(x: menuSelectedX -  menuMaxWidth, y: 0)
                         UIView.animate(withDuration: menuViewAnimationDuration, animations: {
                             self.menuView.setContentOffset(menuPoint, animated: false)
                         }, completion: nil)
