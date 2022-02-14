@@ -9,6 +9,43 @@ import UIKit
 
 open class JTabBar: UIViewController {
     
+    public var menuBottomLineAnimationDuration = 0.3
+    public var menuViewAnimationDuration = 0.3
+    
+    private var viewControllers:[UIViewController]!
+    private var menus:[String]!
+    private var parentController:UIViewController?
+    private var config:JTabConfig!
+    
+    private var menuViewContentWidthList:[CGFloat] = []
+    private var menuViewContentWidth:CGFloat = 0.0
+    
+    private var previousIndex:Int = 0
+    private var currentIndex:Int = 0
+
+    //MARK: - initializer
+    public init(viewControllers: [UIViewController], config: JTabConfig) {
+        super.init(nibName: nil, bundle: nil)
+        
+        self.viewControllers = viewControllers
+        self.menus = config.menus
+        self.config = config
+        
+        setupButtonTab()
+    }
+    
+    required public init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    public func add(parentController: UIViewController) {
+        self.parentController = parentController
+        
+        parentController.addChild(self)
+        parentController.view.addSubview(self.view)
+        didMove(toParent: parentController)
+    }
+    
     private lazy var menuLayout:UICollectionViewLayout = {
         let layout = UICollectionViewFlowLayout()
         
@@ -58,44 +95,11 @@ open class JTabBar: UIViewController {
         
         return sv
     }()
-    
-    private var viewControllers:[UIViewController]!
-    private var menus:[String]!
-    private var parentController:UIViewController?
-    private var config:JTabConfig!
-    
-    private var menuViewContentWidthList:[CGFloat] = []
-    private var menuViewContentWidth:CGFloat = 0.0
-    
-    private var previousIndex:Int = 0
-    private var currentIndex:Int = 0
-
-    //MARK: - initializer
-    public init(viewControllers: [UIViewController], config: JTabConfig) {
-        super.init(nibName: nil, bundle: nil)
-        
-        self.viewControllers = viewControllers
-        self.menus = config.menus
-        self.config = config
-        
-        setupButtonTab()
-    }
-    
-    required public init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-    
-    public func add(parentController: UIViewController) {
-        self.parentController = parentController
-        
-        parentController.addChild(self)
-        parentController.view.addSubview(self.view)
-        didMove(toParent: parentController)
-    }
 }
 
 //MARK: - Creating Tab
 extension JTabBar {
+
     open override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         scrollView.contentSize = CGSize(width: self.view.frame.width * CGFloat(viewControllers.count), height: 0)
@@ -254,7 +258,7 @@ extension JTabBar: UIScrollViewDelegate {
             let borderMenuBottomViewPoint = CGPoint(x: borderMenuBottomViewX, y: config.menuHeight - config.menuBottomLineHeight)
             if self.menuView.frame.width > self.menuViewContentWidth {
                 //EntireView > ContentView
-                UIView.animate(withDuration: 0.1, animations: {
+                UIView.animate(withDuration: menuBottomLineAnimationDuration, animations: {
                     self.borderMenuBottomView.frame.origin = borderMenuBottomViewPoint
                     //Calculating border width
                     var size = self.getTextSize(text: self.menus[currentIndex])
@@ -266,7 +270,7 @@ extension JTabBar: UIScrollViewDelegate {
                 }, completion: nil)
             } else {
                 //EntireView < ContentView
-                UIView.animate(withDuration: 0.1, animations: {
+                UIView.animate(withDuration: menuBottomLineAnimationDuration, animations: {
                     self.borderMenuBottomView.frame.origin = borderMenuBottomViewPoint
                     self.borderMenuBottomView.frame.size = CGSize(width: menuSelectedWidth, height: self.borderMenuBottomView.frame.size.height)
                 }, completion: nil)
@@ -300,19 +304,19 @@ extension JTabBar: UIScrollViewDelegate {
                         //Move to last
                         let x = menuView.contentSize.width - self.scrollView.frame.width
                         let menuPoint = CGPoint(x: x , y: 0)
-                        UIView.animate(withDuration: 0.1, animations: {
+                        UIView.animate(withDuration: menuViewAnimationDuration, animations: {
                             self.menuView.setContentOffset(menuPoint, animated: false)
                         }, completion: nil)
                     } else {
                         //Move to middle
                         let menuPoint = CGPoint(x: menuSelectedX , y: 0)
-                        UIView.animate(withDuration: 0.1, animations: {
+                        UIView.animate(withDuration: menuViewAnimationDuration, animations: {
                             self.menuView.setContentOffset(menuPoint, animated: false)
                         }, completion: nil)
                     }
                 } else {
                     //Move to first
-                    UIView.animate(withDuration: 0.1, animations: {
+                    UIView.animate(withDuration: menuViewAnimationDuration, animations: {
                         let menuPoint = CGPoint(x: 0 , y: 0)
                         self.menuView.setContentOffset(menuPoint, animated: false)
                     }, completion: nil)
