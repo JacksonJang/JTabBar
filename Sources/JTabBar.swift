@@ -284,27 +284,26 @@ extension JTabBar: UIScrollViewDelegate {
                     if menuMaxWidth >= self.scrollView.frame.width / 3 {
                         break
                     }
+                    let temp = menuMaxWidth
                     menuMaxWidth += getTextSize(text: item).width
                     
                     if menuMaxWidth > self.scrollView.frame.width / 3 {
-                        menuMaxWidth = self.scrollView.frame.width / 3
+                        menuMaxWidth -= temp
                     }
                 }
                 
                 //calculated value that is from first to last width value
-                var menufirstToSelectedWidth:CGFloat = 0.0
+                var menuFirstToSelectedWidth:CGFloat = 0.0
                 var y = 0
                 while y < currentIndex + 1 {
-                    menufirstToSelectedWidth += getTextSize(text: menus[y]).width
+                    menuFirstToSelectedWidth += getTextSize(text: menus[y]).width
                     y += 1
                 }
                 
                 //Moving event MenuView
                 let menuSelectedX = menuSelectedOrigin.x
-                if menuSelectedX > menuMaxWidth {
-                    let calSelectedX = max(menuSelectedX - 20, 0)
-                    //menuView.contentSize.width :
-                    if menuView.contentSize.width - menufirstToSelectedWidth - getTextSize(text: menus[currentIndex-1]).width < menuMaxWidth {
+                if menuSelectedX >= menuMaxWidth {
+                    if menuView.contentSize.width - menuFirstToSelectedWidth - menuSelectedX < menuMaxWidth {
                         //Move to last
                         let x = menuView.contentSize.width - self.scrollView.frame.width
                         let menuPoint = CGPoint(x: x , y: 0)
@@ -313,7 +312,7 @@ extension JTabBar: UIScrollViewDelegate {
                         }, completion: nil)
                     } else {
                         //Move to middle
-                        let menuPoint = CGPoint(x: calSelectedX , y: 0)
+                        let menuPoint = CGPoint(x: menuView.frame.width - menuSelectedX -  menuMaxWidth, y: 0)
                         UIView.animate(withDuration: menuViewAnimationDuration, animations: {
                             self.menuView.setContentOffset(menuPoint, animated: false)
                         }, completion: nil)
