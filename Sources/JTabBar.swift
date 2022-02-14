@@ -9,8 +9,9 @@ import UIKit
 
 open class JTabBar: UIViewController {
     
-    public var menuBottomLineAnimationDuration = 0.3
-    public var menuViewAnimationDuration = 0.3
+    public var menuBottomLineAnimationDuration:CGFloat = 0.3
+    public var menuViewAnimationDuration:CGFloat = 0.3
+    public var scrollViewAnimationDuration:CGFloat = 0.3
     
     private var viewControllers:[UIViewController]!
     private var menus:[String]!
@@ -156,7 +157,9 @@ extension JTabBar {
     private func moveToTab(index:Int) {
         let scrollViewOffset = CGPoint(x: Int(self.scrollView.frame.width) * index, y: 0)
         
-        scrollView.setContentOffset(scrollViewOffset, animated: true)
+        UIView.animate(withDuration: scrollViewAnimationDuration, animations: {
+            self.scrollView.setContentOffset(scrollViewOffset, animated: false)
+        })
 
     }
     
