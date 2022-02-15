@@ -337,7 +337,7 @@ extension JTabBar {
         label.text = text
         label.frame.size = CGSize(width: CGFloat.greatestFiniteMagnitude, height: CGFloat.greatestFiniteMagnitude)
         label.sizeToFit()
-        label.frame.size = CGSize(width: label.frame.size.width + config.menuLeftMargin + config.menuRightMargin, height: label.frame.size.height + config.menuTopMargin + config.menuBottomMargin)
+        label.frame.size = CGSize(width: label.frame.size.width + config.menuLeftMargin + config.menuRightMargin, height: label.frame.size.height)
         return label.frame.size
     }
 }

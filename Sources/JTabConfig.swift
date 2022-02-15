@@ -12,10 +12,8 @@ public class JTabConfig {
     open var menuType:MenuType = .button
     
     //Menu Tab
-    open var menuTopMargin:CGFloat = 0.0
-    open var menuLeftMargin:CGFloat = 0.0
-    open var menuRightMargin:CGFloat = 20.0
-    open var menuBottomMargin:CGFloat = 20.0
+    open var menuLeftMargin:CGFloat = 10.0
+    open var menuRightMargin:CGFloat = 10.0
     
     open var menuHeight:CGFloat = 50.0
     
