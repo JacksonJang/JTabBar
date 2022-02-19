@@ -24,6 +24,7 @@ open class JTabBar: UIViewController {
     private var previousIndex:Int = 0
     private var currentIndex:Int = 0
     
+    //MARK: - ButtonTab Properties
     open var pageWidth: CGFloat {
         return scrollView.frame.width
     }
@@ -31,6 +32,17 @@ open class JTabBar: UIViewController {
     open func getIndexPageFor(contentOffset: CGFloat) -> Int {
         return Int((contentOffset + 1.5 * pageWidth) / pageWidth) - 1
     }
+    
+    open var swipeDirection: SwipeDirection {
+        if scrollView.contentOffset.x > lastContentOffset {
+            return .left
+        } else if scrollView.contentOffset.x < lastContentOffset {
+            return .right
+        }
+        return .none
+    }
+    
+    private var lastContentOffset: CGFloat = 0.0
 
     //MARK: - initializer
     public init(viewControllers: [UIViewController], config: JTabConfig) {
@@ -247,8 +259,7 @@ extension JTabBar: UIScrollViewDelegate {
         if self.scrollView == scrollView {
 
             let indexPage = getIndexPageFor(contentOffset: scrollView.contentOffset.x)
-            print("indexPage : ", indexPage)
-            
+            lastContentOffset = scrollView.contentOffset.x
         }
     }
 }
