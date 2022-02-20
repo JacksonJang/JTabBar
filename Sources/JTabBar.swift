@@ -9,9 +9,8 @@ import UIKit
 
 open class JTabBar: UIViewController {
     
-    public var menuBottomLineAnimationDuration:CGFloat = 0.3
-    public var menuViewAnimationDuration:CGFloat = 0.3
     public var scrollViewAnimationDuration:CGFloat = 0.3
+    public var selectedBarAlignment: SelectedBarAlignment = .center
     
     private var viewControllers:[UIViewController]!
     private var menus:[String]!
@@ -24,14 +23,10 @@ open class JTabBar: UIViewController {
     private var previousIndex:Int = 0
     private var currentIndex:Int = 0
     
-    //MARK: - Button Menu Properties
-    private var selectedBarAlignment: SelectedBarAlignment = .center
     private var lastContentOffset: CGFloat = 0.0
-    
     private var pageWidth: CGFloat {
         return scrollView.frame.width
     }
-    
     private var swipeDirection: SwipeDirection {
         if scrollView.contentOffset.x > lastContentOffset {
             return .left
@@ -40,7 +35,6 @@ open class JTabBar: UIViewController {
         }
         return .none
     }
-    
     private var scrollPercentage: CGFloat {
         if swipeDirection != .right {
             let module = fmod(scrollView.contentOffset.x, pageWidth)
@@ -185,7 +179,6 @@ extension JTabBar {
         UIView.animate(withDuration: scrollViewAnimationDuration, animations: {
             self.scrollView.setContentOffset(scrollViewOffset, animated: false)
         })
-
     }
     
     private func addContentView(index:Int) {
@@ -362,7 +355,7 @@ extension JTabBar: UIScrollViewDelegate {
     }
     
     private func contentOffsetForCell(withFrame cellFrame: CGRect, andIndex index: Int) -> CGFloat {
-        let sectionInset = (menuView.collectionViewLayout as! UICollectionViewFlowLayout).sectionInset // swiftlint:disable:this force_cast
+        let sectionInset = (menuView.collectionViewLayout as! UICollectionViewFlowLayout).sectionInset
         var alignmentOffset: CGFloat = 0.0
 
         switch selectedBarAlignment {
