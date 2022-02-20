@@ -19,6 +19,7 @@
 		E230B7BF27AE21EB0069F321 /* JTabConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = E230B7BE27AE21EB0069F321 /* JTabConfig.swift */; };
 		E232716027B536AD005D0C46 /* JTabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = E230B7AA27AC7AB40069F321 /* JTabBar.swift */; };
 		E2771ABC27C1290600D32D76 /* SwipeDirection.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2771ABB27C1290600D32D76 /* SwipeDirection.swift */; };
+		E2771ABF27C1C59000D32D76 /* PagerScroll.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2771ABE27C1C59000D32D76 /* PagerScroll.swift */; };
 		E2C792C527B0F052008CB915 /* MenuType.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2C792C427B0F052008CB915 /* MenuType.swift */; };
 		ED3CA4BCDBD7E6E94D48FD9296D784C1 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 73010CC983E3809BECEE5348DA1BB8C6 /* Foundation.framework */; };
 		F40151C94B6C561C8FE3B855815EB07E /* Pods-JTabBar_Tests-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 1E8F66FA8A5D4F884E79F7748377A102 /* Pods-JTabBar_Tests-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -76,6 +77,7 @@
 		E230B7B827ADF74B0069F321 /* JTabBarProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JTabBarProtocol.swift; sourceTree = "<group>"; };
 		E230B7BE27AE21EB0069F321 /* JTabConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JTabConfig.swift; sourceTree = "<group>"; };
 		E2771ABB27C1290600D32D76 /* SwipeDirection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwipeDirection.swift; sourceTree = "<group>"; };
+		E2771ABE27C1C59000D32D76 /* PagerScroll.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PagerScroll.swift; sourceTree = "<group>"; };
 		E2C792C427B0F052008CB915 /* MenuType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuType.swift; sourceTree = "<group>"; };
 		E6047D3EB31BD3369B6524B6ACD2B4AB /* JTabBar.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = JTabBar.debug.xcconfig; sourceTree = "<group>"; };
 		E7C1895C80BFE0682663CEE7AFF88857 /* JTabBar-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "JTabBar-prefix.pch"; sourceTree = "<group>"; };
@@ -233,6 +235,7 @@
 			children = (
 				E2C792C427B0F052008CB915 /* MenuType.swift */,
 				E2771ABB27C1290600D32D76 /* SwipeDirection.swift */,
+				E2771ABE27C1C59000D32D76 /* PagerScroll.swift */,
 			);
 			path = Enum;
 			sourceTree = "<group>";
@@ -429,6 +432,7 @@
 			files = (
 				E230B7BF27AE21EB0069F321 /* JTabConfig.swift in Sources */,
 				E230B7B927ADF74B0069F321 /* JTabBarProtocol.swift in Sources */,
+				E2771ABF27C1C59000D32D76 /* PagerScroll.swift in Sources */,
 				E230B7B627AD02EE0069F321 /* JTabMenuCell.swift in Sources */,
 				E2771ABC27C1290600D32D76 /* SwipeDirection.swift in Sources */,
 				E2C792C527B0F052008CB915 /* MenuType.swift in Sources */,

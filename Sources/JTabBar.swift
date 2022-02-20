@@ -24,16 +24,15 @@ open class JTabBar: UIViewController {
     private var previousIndex:Int = 0
     private var currentIndex:Int = 0
     
-    //MARK: - ButtonTab Properties
-    open var pageWidth: CGFloat {
+    //MARK: - Button Menu Properties
+    private var selectedBarAlignment: SelectedBarAlignment = .center
+    private var lastContentOffset: CGFloat = 0.0
+    
+    private var pageWidth: CGFloat {
         return scrollView.frame.width
     }
     
-    open func getIndexPageFor(contentOffset: CGFloat) -> Int {
-        return Int((contentOffset + 1.5 * pageWidth) / pageWidth) - 1
-    }
-    
-    open var swipeDirection: SwipeDirection {
+    private var swipeDirection: SwipeDirection {
         if scrollView.contentOffset.x > lastContentOffset {
             return .left
         } else if scrollView.contentOffset.x < lastContentOffset {
@@ -42,7 +41,13 @@ open class JTabBar: UIViewController {
         return .none
     }
     
-    private var lastContentOffset: CGFloat = 0.0
+    private var scrollPercentage: CGFloat {
+        if swipeDirection != .right {
+            let module = fmod(scrollView.contentOffset.x, pageWidth)
+            return module == 0.0 ? 1.0 : module / pageWidth
+        }
+        return 1 - fmod(scrollView.contentOffset.x >= 0 ? scrollView.contentOffset.x : pageWidth + scrollView.contentOffset.x, pageWidth) / pageWidth
+    }
 
     //MARK: - initializer
     public init(viewControllers: [UIViewController], config: JTabConfig) {
@@ -257,10 +262,123 @@ extension JTabBar: UIScrollViewDelegate {
     
     public func scrollViewDidScroll(_ scrollView: UIScrollView) {
         if self.scrollView == scrollView {
-
-            let indexPage = getIndexPageFor(contentOffset: scrollView.contentOffset.x)
+            updateMenuView()
             lastContentOffset = scrollView.contentOffset.x
         }
+    }
+    
+    private func updateMenuView() {
+        let indexPage = getIndexPageFor(contentOffset: scrollView.contentOffset.x)
+        let newCurrentIndex = pageFor(indexPage: indexPage)
+        currentIndex = newCurrentIndex
+        let (fromIndex, toIndex, scrollPercentage) = progressiveIndicatorData(indexPage)
+        
+        let fromFrame = menuView.layoutAttributesForItem(at: IndexPath(item: fromIndex, section: 0))!.frame
+        let numberOfItems = menuView.dataSource!.collectionView(menuView.self, numberOfItemsInSection: 0)
+        
+        var toFrame: CGRect
+
+        if toIndex < 0 || toIndex > numberOfItems - 1 {
+            if toIndex < 0 {
+                let cellAtts = menuView.layoutAttributesForItem(at: IndexPath(item: 0, section: 0))
+                toFrame = cellAtts!.frame.offsetBy(dx: -cellAtts!.frame.size.width, dy: 0)
+            } else {
+                let cellAtts = menuView.layoutAttributesForItem(at: IndexPath(item: (numberOfItems - 1), section: 0))
+                toFrame = cellAtts!.frame.offsetBy(dx: cellAtts!.frame.size.width, dy: 0)
+            }
+        } else {
+            toFrame = menuView.layoutAttributesForItem(at: IndexPath(item: toIndex, section: 0))!.frame
+        }
+        
+        var targetFrame = fromFrame
+        targetFrame.size.height = borderMenuBottomView.frame.size.height
+        targetFrame.size.width += (toFrame.size.width - fromFrame.size.width) * scrollPercentage
+        targetFrame.origin.x += (toFrame.origin.x - fromFrame.origin.x) * scrollPercentage
+        
+        borderMenuBottomView.frame = CGRect(x: targetFrame.origin.x, y: borderMenuBottomView.frame.origin.y, width: targetFrame.size.width, height: borderMenuBottomView.frame.size.height)
+        
+        var targetContentOffset: CGFloat = 0.0
+        if menuView.contentSize.width > menuView.frame.size.width {
+            let toContentOffset = contentOffsetForCell(withFrame: toFrame, andIndex: toIndex)
+            let fromContentOffset = contentOffsetForCell(withFrame: fromFrame, andIndex: fromIndex)
+
+            targetContentOffset = fromContentOffset + ((toContentOffset - fromContentOffset) * scrollPercentage)
+        }
+
+        menuView.setContentOffset(CGPoint(x: targetContentOffset, y: 0), animated: false)
+    }
+        
+    private func getIndexPageFor(contentOffset: CGFloat) -> Int {
+        return Int((contentOffset + 1.5 * pageWidth) / pageWidth) - 1
+    }
+    
+    private  func pageFor(indexPage: Int) -> Int {
+        if indexPage < 0 {
+            return 0
+        }
+        if indexPage > viewControllers.count - 1 {
+            return viewControllers.count - 1
+        }
+        return indexPage
+    }
+    
+    private func progressiveIndicatorData(_ virtualPage: Int) -> (Int, Int, CGFloat) {
+        let count = viewControllers.count
+        var fromIndex = currentIndex
+        var toIndex = currentIndex
+        let direction = swipeDirection
+
+        if direction == .left {
+            if virtualPage > count - 1 {
+                fromIndex = count - 1
+                toIndex = count
+            } else {
+                if self.scrollPercentage >= 0.5 {
+                    fromIndex = max(toIndex - 1, 0)
+                } else {
+                    toIndex = fromIndex + 1
+                }
+            }
+        } else if direction == .right {
+            if virtualPage < 0 {
+                fromIndex = 0
+                toIndex = -1
+            } else {
+                if self.scrollPercentage > 0.5 {
+                    fromIndex = min(toIndex + 1, count - 1)
+                } else {
+                    toIndex = fromIndex - 1
+                }
+            }
+        }
+        
+        return (fromIndex, toIndex, scrollPercentage)
+    }
+    
+    private func contentOffsetForCell(withFrame cellFrame: CGRect, andIndex index: Int) -> CGFloat {
+        let sectionInset = (menuView.collectionViewLayout as! UICollectionViewFlowLayout).sectionInset // swiftlint:disable:this force_cast
+        var alignmentOffset: CGFloat = 0.0
+
+        switch selectedBarAlignment {
+        case .left:
+            alignmentOffset = sectionInset.left
+        case .right:
+            alignmentOffset = menuView.frame.size.width - sectionInset.right - cellFrame.size.width
+        case .center:
+            alignmentOffset = (menuView.frame.size.width - cellFrame.size.width) * 0.5
+        case .progressive:
+            let cellHalfWidth = cellFrame.size.width * 0.5
+            let leftAlignmentOffset = sectionInset.left + cellHalfWidth
+            let rightAlignmentOffset = menuView.frame.size.width - sectionInset.right - cellHalfWidth
+            let numberOfItems = menuView.dataSource!.collectionView(menuView.self, numberOfItemsInSection: 0)
+            let progress = index / (numberOfItems - 1)
+            alignmentOffset = leftAlignmentOffset + (rightAlignmentOffset - leftAlignmentOffset) * CGFloat(progress) - cellHalfWidth
+        }
+
+        var contentOffset = cellFrame.origin.x - alignmentOffset
+        contentOffset = max(0, contentOffset)
+        contentOffset = min(menuView.contentSize.width - menuView.frame.size.width, contentOffset)
+        return contentOffset
     }
 }
 
