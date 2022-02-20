@@ -96,7 +96,7 @@ open class JTabBar: UIViewController {
         return view
     }()
     
-    private lazy var borderMenuBottomView:UIView = {
+    private lazy var menuBottomLineView:UIView = {
         let view = UIView()
         
         view.backgroundColor = config.menuBottomLineColor
@@ -133,7 +133,7 @@ extension JTabBar {
     
     private func setupButtonTab() {
         self.view.addSubview(menuView)
-        self.menuView.addSubview(borderMenuBottomView)
+        self.menuView.addSubview(menuBottomLineView)
         self.view.addSubview(scrollView)
         
         if #available(iOS 11.0, *) {
@@ -246,12 +246,12 @@ extension JTabBar: UICollectionViewDelegate, UICollectionViewDataSource, UIColle
             self.menuView.isScrollEnabled = false
             let calWidth = (self.menuView.frame.width - self.menuViewContentWidth) / CGFloat(self.menuViewContentWidthList.count)
             
-            size = CGSize(width: size.width + calWidth, height: self.borderMenuBottomView.frame.size.height)
+            size = CGSize(width: size.width + calWidth, height: self.menuBottomLineView.frame.size.height)
         }
         
         //changed border of first index
         if indexPath.row == 0 {
-            self.borderMenuBottomView.frame.size = CGSize(width: size.width, height: self.borderMenuBottomView.frame.size.height)
+            self.menuBottomLineView.frame.size = CGSize(width: size.width, height: self.menuBottomLineView.frame.size.height)
         }
         
         return CGSize(width: size.width, height: config.menuHeight)
@@ -270,41 +270,28 @@ extension JTabBar: UIScrollViewDelegate {
     private func updateMenuView() {
         let indexPage = getIndexPageFor(contentOffset: scrollView.contentOffset.x)
         let newCurrentIndex = pageFor(indexPage: indexPage)
-        currentIndex = newCurrentIndex
+        self.currentIndex = newCurrentIndex
         let (fromIndex, toIndex, scrollPercentage) = progressiveIndicatorData(indexPage)
+        var targetContentOffset: CGFloat = 0.0
         
+        //Calculate Frame of menuBottomLineView
+        let toFrame: CGRect = getToFrame(toIndex: toIndex)
         let fromFrame = menuView.layoutAttributesForItem(at: IndexPath(item: fromIndex, section: 0))!.frame
-        let numberOfItems = menuView.dataSource!.collectionView(menuView.self, numberOfItemsInSection: 0)
-        
-        var toFrame: CGRect
-
-        if toIndex < 0 || toIndex > numberOfItems - 1 {
-            if toIndex < 0 {
-                let cellAtts = menuView.layoutAttributesForItem(at: IndexPath(item: 0, section: 0))
-                toFrame = cellAtts!.frame.offsetBy(dx: -cellAtts!.frame.size.width, dy: 0)
-            } else {
-                let cellAtts = menuView.layoutAttributesForItem(at: IndexPath(item: (numberOfItems - 1), section: 0))
-                toFrame = cellAtts!.frame.offsetBy(dx: cellAtts!.frame.size.width, dy: 0)
-            }
-        } else {
-            toFrame = menuView.layoutAttributesForItem(at: IndexPath(item: toIndex, section: 0))!.frame
-        }
-        
         var targetFrame = fromFrame
-        targetFrame.size.height = borderMenuBottomView.frame.size.height
+        targetFrame.size.height = menuBottomLineView.frame.size.height
         targetFrame.size.width += (toFrame.size.width - fromFrame.size.width) * scrollPercentage
         targetFrame.origin.x += (toFrame.origin.x - fromFrame.origin.x) * scrollPercentage
         
-        borderMenuBottomView.frame = CGRect(x: targetFrame.origin.x, y: borderMenuBottomView.frame.origin.y, width: targetFrame.size.width, height: borderMenuBottomView.frame.size.height)
+        menuBottomLineView.frame = CGRect(x: targetFrame.origin.x, y: menuBottomLineView.frame.origin.y, width: targetFrame.size.width, height: menuBottomLineView.frame.size.height)
         
-        var targetContentOffset: CGFloat = 0.0
+        //Calculate Offset of menuView
         if menuView.contentSize.width > menuView.frame.size.width {
             let toContentOffset = contentOffsetForCell(withFrame: toFrame, andIndex: toIndex)
             let fromContentOffset = contentOffsetForCell(withFrame: fromFrame, andIndex: fromIndex)
 
             targetContentOffset = fromContentOffset + ((toContentOffset - fromContentOffset) * scrollPercentage)
         }
-
+        
         menuView.setContentOffset(CGPoint(x: targetContentOffset, y: 0), animated: false)
     }
         
@@ -322,14 +309,14 @@ extension JTabBar: UIScrollViewDelegate {
         return indexPage
     }
     
-    private func progressiveIndicatorData(_ virtualPage: Int) -> (Int, Int, CGFloat) {
+    private func progressiveIndicatorData(_ indexPage: Int) -> (Int, Int, CGFloat) {
         let count = viewControllers.count
         var fromIndex = currentIndex
         var toIndex = currentIndex
         let direction = swipeDirection
 
         if direction == .left {
-            if virtualPage > count - 1 {
+            if indexPage > count - 1 {
                 fromIndex = count - 1
                 toIndex = count
             } else {
@@ -340,7 +327,7 @@ extension JTabBar: UIScrollViewDelegate {
                 }
             }
         } else if direction == .right {
-            if virtualPage < 0 {
+            if indexPage < 0 {
                 fromIndex = 0
                 toIndex = -1
             } else {
@@ -353,6 +340,25 @@ extension JTabBar: UIScrollViewDelegate {
         }
         
         return (fromIndex, toIndex, scrollPercentage)
+    }
+    
+    func getToFrame(toIndex: Int) -> CGRect {
+        var toFrame = CGRect.zero
+        let numberOfItems = menuView.dataSource!.collectionView(menuView.self, numberOfItemsInSection: 0)
+        
+        if toIndex < 0 || toIndex > numberOfItems - 1 {
+            if toIndex < 0 {
+                let cellAtts = menuView.layoutAttributesForItem(at: IndexPath(item: 0, section: 0))
+                toFrame = cellAtts!.frame.offsetBy(dx: -cellAtts!.frame.size.width, dy: 0)
+            } else {
+                let cellAtts = menuView.layoutAttributesForItem(at: IndexPath(item: (numberOfItems - 1), section: 0))
+                toFrame = cellAtts!.frame.offsetBy(dx: cellAtts!.frame.size.width, dy: 0)
+            }
+        } else {
+            toFrame = menuView.layoutAttributesForItem(at: IndexPath(item: toIndex, section: 0))!.frame
+        }
+        
+        return toFrame
     }
     
     private func contentOffsetForCell(withFrame cellFrame: CGRect, andIndex index: Int) -> CGFloat {
